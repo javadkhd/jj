@@ -1,0 +1,461 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="rtl" class="disable-onload-scroll side-header-overlay-full-screen overflow-hidden" lang="">
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>قالب Porto - قالب HTML چند منظوره پورتو</title>
+
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Porto - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/animate/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/magnific-popup/magnific-popup.min.css' %}">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme-elements.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme-blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme-shop.css' %}">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/rs-plugin/css/settings.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/rs-plugin/css/layers.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/rs-plugin/css/navigation.css' %}">
+
+    <!-- Demo CSS -->
+
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="{% static 'css/skins/default.css' %}">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <!-- Head Libs -->
+    <script src="{% static 'vendor/modernizr/modernizr.min.js' %}"></script>
+
+</head>
+<body class="loading-overlay-showing" data-loading-overlay data-plugin-section-scroll
+      data-plugin-options="{'targetClass': '.section-scroll', 'dotsClass': 'section-scroll-dots-navigation-style-2 section-scroll-dots-navigation-light', 'changeHeaderLogo': true, 'headerLogoDark': 'img/logo-default-slim.png', 'headerLogoLight': 'img/logo-default-slim-dark.png'}">
+<div class="loading-overlay">
+    <div class="bounce-loader">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<div class="body bg-dark">
+
+    <div >
+        {{ db_col_1 }}
+    </div>
+
+    <div class="sticky-wrapper sticky-wrapper-transparent sticky-wrapper-border-bottom bg-transparent"
+         data-plugin-sticky data-plugin-options="{'minWidth': 0, 'stickyStartEffectAt': 1, 'padding': {'top': 0}}">
+        <div class="sticky-body">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-9">
+                        <div class="py-4">
+                            <a href="index.html">
+                                <img alt="Porto" width="82" height="40" src="{% static 'img/jj1.jpeg' %}">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-3 text-right">
+                        <button class="hamburguer-btn hamburguer-btn-light" data-set-active="false">
+									<span class="hamburguer">
+										<span></span>
+										<span></span>
+										<span></span>
+									</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header id="header" class="side-header-overlay-full-screen side-header-hide pt-0"
+            data-plugin-options="{'stickyEnabled': false}">
+
+        <button class="hamburguer-btn hamburguer-btn-light hamburguer-btn-side-header hamburguer-btn-side-header-overlay active"
+                data-set-active="false">
+					<span class="close">
+						<span></span>
+						<span></span>
+					</span>
+        </button>
+
+        <div class="header-body d-flex h-100">
+            <div class="header-column flex-row flex-lg-column justify-content-center h-100">
+                <div class="header-container container d-flex h-100">
+                    <div class="header-row header-row-side-header flex-row h-100">
+                        <div class="side-header-scrollable scrollable colored-slider h-50 mt-5" data-plugin-scrollable>
+                            <div class="scrollable-content">
+                                <div class="header-nav header-nav-light-text header-nav-links header-nav-links-side-header header-nav-links-vertical header-nav-links-vertical-expand header-nav-click-to-open align-self-start">
+                                    <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-4 header-nav-main-sub-effect-1">
+                                        <nav>
+                                            <ul class="nav nav-pills" id="mainNav">
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        خانه
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" href="index.html">
+                                                                صفحه اول
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">
+                                                                پیش‌نمایش ها
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        صفحات
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">تماس با ما</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                       href="">تماس با ما -
+                                                                    پیشرفته</a></li>
+                                                                <li><a class="dropdown-item" href="">تماس
+                                                                    با ما - پایه</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                       href="">تماس با ما -
+                                                                    Recaptcha</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">درباره ما</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                       href="">درباره ما -
+                                                                    پیشرفته</a></li>
+                                                                <li><a class="dropdown-item" href="">درباره
+                                                                    ما - پایه</a></li>
+                                                                <li><a class="dropdown-item" href="">درباره
+                                                                    من</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        نمونه‌کارها
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">جزئیات پروژه</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                       href="">اسلایدر
+                                                                    عریض</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                       href="">اسلایدر
+                                                                    کوچک</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div role="main" class="main">
+        <section class="section section-scroll bg-light border-0 p-0 m-0" data-section-scroll-title="HOME"
+                 data-section-scroll-header-color="light">
+            <div class="position-absolute w-100 h-100 top-0 left-0 appear-animation" data-appear-animation="fadeIn"
+                 data-appear-animation-delay="0"
+                 style="background-image: url({% static 'img/bg-portfolio-5.jpg' %}); background-size: cover; background-position: center;"></div>
+            <div class="container h-100">
+                <div class="row align-items-center justify-content-center h-100">
+                    <div class="col-lg-7 text-center">
+                        <h1 class="font-weight-bold text-color-light text-13 line-height-7 negative-ls-2 mb-4">سلام، ما
+                            <strong class="text-color-primary font-weight-extra-bold appear-animation"
+                                    data-appear-animation="fadeIn" data-appear-animation-delay="200">سٌلدا</strong>
+                            هستیم. یک شرکت دیجیتال از <strong
+                                    class="text-color-primary font-weight-extra-bold appear-animation"
+                                    data-appear-animation="fadeIn" data-appear-animation-delay="500">شهر مشهد.</strong>
+                        </h1>
+                        <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1000">
+                            <p class="font-weight-light text-color-light text-6 line-height-7 opacity-7 px-5 mb-0">لورم
+                                ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-scroll section-background border-0 m-0" data-section-scroll-title="PORTO BOX"
+                 data-section-scroll-header-color="light"
+                 style="background-image: url({% static 'img/slide-medical-2.jpg' %}); background-size: cover; background-position: center;">
+            <div class="box-content">
+                <br/>
+                <br/>
+                <div class="overflow-hidden mb-1">
+                    <h2 class="font-weight-normal text-7 mb-0"><strong
+                            class="font-weight-extra-bold mx-5">جستجو در بین کدهای کتاب ICD10</strong></h2>
+                </div>
+                <br/>
+                <form class="contact-form" action="" method="POST">
+                    <div class="contact-form-success alert alert-success d-none mt-4">
+                        <strong>موفقیت!</strong> پیام شما به ما ارسال شد.
+                    </div>
+
+                    <div class="contact-form-error alert alert-danger d-none mt-4">
+                        <strong>خطا!</strong> خطایی در ارسال پیام شما پیش آمد.
+                        <span class="mail-error-message text-1 d-block"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6  mx-5">
+                            <label class="required font-weight-bold text-dark text-2">قسمتی
+                                از شرح کد</label>
+                            <input type="text" value="" data-msg-required="لطفا نام خود را وارد کنید." maxlength="100"
+                                   class="form-control" name="name" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 mx-5">
+                                <label class="font-weight-bold text-dark">شرح
+                                    کد</label>
+                                <select class="form-control">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 mx-5">
+                            <input type="submit" value="جستجو کد" class="btn btn-primary btn-modern align-text-top mx-5"
+                                   data-loading-text="در حال بارگذاری ...">
+                        </div>
+                        <div class="form-row mx-5">
+                            <div class="form-group col-lg-6">
+                                <label class="required font-weight-bold text-dark text-2">کد ملی</label>
+                                <input type="text" value="" placeholder="000000" maxlength="100" style="color: #0a0a0a"
+                                       class="form-control" name="name" required>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+                <br/>
+                <br/>
+                <br/>
+                <div class="container-fluid h-100">
+                    <div class="row align-items-end h-100">
+                        <div class="col-9 col-md-5 col-lg-3 overlay overlay-show overlay-op-9 overlay-backward py-2 appear-animation"
+                             data-appear-animation="fadeInRightShorter">
+                            <div class="position-relative z-index-2 py-4">
+                                <h2 class="text-color-light font-weight-bold text-5 mb-2 appear-animation primary-font"
+                                    data-appear-animation="fadeInRightShorter" data-appear-animation-delay="300">آخرین
+                                    ورژن
+                                    ICD10</h2>
+                                <a href="#"
+                                   class="d-inline-flex align-items-center btn btn-with-arrow font-weight-bold text-color-light text-2 p-0 appear-animation"
+                                   data-appear-animation="fadeInRightShorter" data-appear-animation-delay="700">
+                                    مشاهده بیشتر
+                                    <span class="d-inline-flex align-items-center bg-transparent box-shadow-none ml-2"><i
+                                            class="fas fa-arrow-left text-color-light text-3 top-0"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-scroll bg-dark border-0 m-0 p-0" data-section-scroll-title="CONTACT"
+                 data-section-scroll-header-color="light">
+            <div class="d-flex flex-column h-100 pt-5 pt-lg-0">
+                <div class="h-50 d-flex flex-column flex-wrap bg-dark">
+                    <div class="container h-75">
+                        <div class="featured-boxes featured-boxes-style-4 h-100">
+                            <div class="row align-items-center h-100 pt-lg-4 appear-animation"
+                                 data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="300">
+                                <div class="col-md-4">
+                                    <div class="featured-box featured-box-primary featured-box-effect-5 px-0">
+                                        <div class="box-content px-0">
+                                            <i class="icons icon-screen-smartphone text-13 text-color-primary"></i>
+                                            <h4 class="text-color-light font-weight-bold text-5 mt-3 mb-2 pt-2 pb-1">
+                                                برنامه های موبایل</h4>
+                                            <p class="text-color-light text-4 opacity-5 mb-0">لورم ایپسوم متن ساختگی با
+                                                تولید سادگی نامفهوم از صنعت </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="featured-box featured-box-primary featured-box-effect-5 px-0">
+                                        <div class="box-content px-0">
+                                            <i class="icons icon-layers text-13 text-color-primary"></i>
+                                            <h4 class="text-color-light font-weight-bold text-5 mt-3 mb-2 pt-2 pb-1">
+                                                وب‌سایت های خلاقانه</h4>
+                                            <p class="text-color-light text-4 opacity-5 mb-0">لورم ایپسوم متن ساختگی با
+                                                تولید سادگی نامفهوم از صنعت </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="featured-box featured-box-primary featured-box-effect-5 px-0">
+                                        <div class="box-content px-0">
+                                            <i class="icons icon-magnifier text-13 text-color-primary"></i>
+                                            <h4 class="text-color-light font-weight-bold text-5 mt-3 mb-2 pt-2 pb-1">
+                                                سئوی بهینه شده</h4>
+                                            <p class="text-color-light text-4 opacity-5 mb-0">لورم ایپسوم متن ساختگی با
+                                                تولید سادگی نامفهوم از صنعت </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer id="footer"
+                            class="bg-transparent mt-0 h-25 d-flex justify-content-end flex-column border-0">
+                        <div class="container">
+                            <div class="footer-copyright footer-copyright-style-2 footer-copyright-full-width-border-top">
+                                <div class="container py-3">
+                                    <div class="row py-0 py-lg-4 appear-animation"
+                                         data-appear-animation="fadeInRightShorter" data-appear-animation-delay="500">
+                                        <div class="col-lg-8 text-center text-lg-left mb-2 mb-lg-0">
+                                            <p>
+														<span class="d-block d-md-inline-block">
+															<i class="far fa-dot-circle text-color-primary text-4 top-1 p-relative"></i>
+															<span class="text-color-light opacity-5 pl-1">فلکه دانشگاه، برج بلور، طبقه 456</span>
+														</span>
+                                                <span class="vertical-divider mx-3 d-none d-md-inline"></span>
+                                                <span class="d-block d-md-inline-block">
+															<i class="fab fa-whatsapp text-color-primary text-4 top-1 p-relative"></i>
+															<a href="tel:1234567890"
+                                                               class="text-color-light opacity-5 pl-1">(800) 123-4567</a>
+														</span>
+                                                <span class="vertical-divider mx-3 d-none d-md-inline"></span>
+                                                <span class="d-block d-md-inline-block">
+															<i class="far fa-envelope text-color-primary text-4 top-1 p-relative"></i>
+															<a href="mailto:mail@example.com"
+                                                               class="text-color-light opacity-5 pl-1">mail@example.com</a>
+														</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end mb-0 pt-4 pt-lg-0">
+                                            <p class="text-color-light opacity-4">ارائه شده در وب‌سایت راست‌چین</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <section
+                        class="video section section-text-light section-video section-center section-overlay-opacity section-overlay-opacity-scale-8 m-0 justify-self-end h-50 appear-animation"
+                        data-appear-animation="fadeIn" data-appear-animation-delay="700"
+                        data-video-path="video/memory-of-a-woman" data-plugin-video-background
+                        data-plugin-options="{'posterType': 'jpg', 'position': '100% 50%'}">
+                    <div class="container h-100">
+                        <div class="row justify-content-center align-items-center h-100 py-5">
+                            <div class="col-lg-8 text-center">
+                                <div class="overflow-hidden pb-3 mb-4">
+                                    <h2 class="font-weight-semibold text-color-light text-8 line-height-7 text-lg-10 ls-0 mb-0 appear-animation"
+                                        data-appear-animation="maskUp" data-appear-animation-delay="900">وب سایت جدید
+                                        خود را هم اکنون بسازید!</h2>
+                                </div>
+                                <p class="text-4 font-weight-normal px-3 mb-5 appear-animation"
+                                   data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1100"><span
+                                        class="opacity-6">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم</span>
+                                </p>
+                                <a href="#" target="_blank"
+                                   class="btn btn-primary btn-rounded font-weight-semibold text-color-light text-3 px-5 py-3 mt-3 mb-0 appear-animation"
+                                   data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1300">خرید
+                                    پورتو</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Vendor -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.appear/jquery.appear.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.cookie/jquery.cookie.min.js' %}"></script>
+<script src="{% static 'vendor/popper/umd/popper.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendor/common/common.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.validation/jquery.validate.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.gmap/jquery.gmap.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.lazyload/jquery.lazyload.min.js' %}"></script>
+<script src="{% static 'vendor/isotope/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'vendor/vide/jquery.vide.min.js' %}"></script>
+<script src="{% static 'vendor/vivus/vivus.min.js' %}"></script>
+<script src="{% static 'vendor/nanoscroller/jquery.nanoscroller.min.js' %}"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="{% static 'js/theme.js' %}"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="{% static 'vendor/rs-plugin/js/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'vendor/rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
+
+<!-- Theme Custom -->
+<script src="{% static 'js/custom.js' %}"></script>
+
+<!-- Theme Initialization Files -->
+<script src="{% static 'js/theme.init.js' %}"></script>
+
+<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-12345678-1', 'auto');
+    ga('send', 'pageview');
+</script>
+ -->
+
+</body>
+</html>
