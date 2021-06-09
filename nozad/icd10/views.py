@@ -4,16 +4,40 @@ from django.db import connection
 import sqlite3
 
 
-def sql_fetch(con):
+def sql_fetch():
+    con = sqlite3.connect('nozad.db')
     cursorObj = con.cursor()
 
-    cursorObj.execute('SELECT * FROM Sheet۱')
+    cursorObj.execute('SELECT * FROM Sheet۱ where ')
 
-    rows = cursorObj.fetchall()
+    db = cursorObj.fetchall()
 
-    for row in rows[:10]:
-        print(row)
-    return rows[:10]
+    return db
+
+
+def col_1():
+
+    db = sql_fetch()
+
+    col_1 = set()
+    for row in db:
+        col_1.add(row[1])
+
+    return col_1
+
+def col_2(str):
+
+    db = sql_fetch()
+    col1 = col_1()
+
+    if str in col1:
+
+        col_2 = set()
+        for row in db:
+            col_1.add(row[2])
+
+        return col_1
+
 
 
 def nozad(request):
@@ -21,13 +45,14 @@ def nozad(request):
     This view will send data to page
     """
 
-    con = sqlite3.connect('nozad.db')
 
-    rows = sql_fetch(con)
+
+    col1 = col_1()
+    print(col1)
 
     col = "111111111111"
 
-    db_col_1 = rows[:10]
+    db_col_1 = col1
     # db_col_2 =
     # db_col_3 =
     return render(
