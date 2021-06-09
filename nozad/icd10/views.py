@@ -4,40 +4,42 @@ from django.db import connection
 import sqlite3
 
 
-def sql_fetch():
+def col_1():
     con = sqlite3.connect('nozad.db')
     cursorObj = con.cursor()
 
-    cursorObj.execute('SELECT * FROM Sheet۱ where ')
+    cursorObj.execute('SELECT دستگاه FROM Sheet۱ ')
 
-    db = cursorObj.fetchall()
+    col1 = set(cursorObj.fetchall())
 
-    return db
+    return col1
 
 
-def col_1():
+def col_2(value2):
 
-    db = sql_fetch()
+    con = sqlite3.connect('nozad.db')
+    cursorObj = con.cursor()
 
-    col_1 = set()
-    for row in db:
-        col_1.add(row[1])
+    cursorObj.execute('SELECT "سرفصل خدمتی" FROM Sheet۱ where دستگاه = "%s"'%(value2))
 
-    return col_1
 
-def col_2(str):
+    col2 = set(cursorObj.fetchall())
 
-    db = sql_fetch()
-    col1 = col_1()
+    return col2
 
-    if str in col1:
 
-        col_2 = set()
-        for row in db:
-            col_1.add(row[2])
+def col_3(value2, value3):
+    con = sqlite3.connect('nozad.db')
+    cursorObj = con.cursor()
 
-        return col_1
+    cursorObj.execute('SELECT "گروه خدمتی" FROM Sheet۱ where دستگاه = "%s" and "سرفصل خدمتی" = "%s" ' % (value2, value3))
 
+    col3 = set(cursorObj.fetchall())
+
+    return col3
+
+def col_4():
+    pass
 
 
 def nozad(request):
@@ -45,22 +47,16 @@ def nozad(request):
     This view will send data to page
     """
 
+    db_col_1 = col_1()
+    db_col_2 = col_2("پوست")
+    db_col_3 = col_3("پوست", "پستان")
 
-
-    col1 = col_1()
-    print(col1)
-
-    col = "111111111111"
-
-    db_col_1 = col1
-    # db_col_2 =
-    # db_col_3 =
     return render(
         request=request,
         context={
             'db_col_1': db_col_1,
-            # 'db_col_2': db_col_2,
-            # 'db_col_3': db_col_3,
+            'db_col_2': db_col_2,
+            'db_col_3': db_col_3,
         },
         template_name='icd10/index.html'
     )
