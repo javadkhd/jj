@@ -11,8 +11,13 @@ def col_1():
     cursorObj.execute('SELECT دستگاه FROM Sheet۱ ')
 
     col1 = set(cursorObj.fetchall())
+    col11 = list()
+    for item in col1:
+        col11.append(item[0])
+    print(col11)
 
-    return col1
+
+    return col11
 
 
 def col_2(value2):
@@ -23,7 +28,7 @@ def col_2(value2):
     cursorObj.execute('SELECT "سرفصل خدمتی" FROM Sheet۱ where دستگاه = "%s"'%(value2))
 
 
-    col2 = set(cursorObj.fetchall())
+    col2 = list(set(cursorObj.fetchall()))
 
     return col2
 
@@ -34,7 +39,7 @@ def col_3(value2, value3):
 
     cursorObj.execute('SELECT "گروه خدمتی" FROM Sheet۱ where دستگاه = "%s" and "سرفصل خدمتی" = "%s" ' % (value2, value3))
 
-    col3 = set(cursorObj.fetchall())
+    col3 = list(set(cursorObj.fetchall()))
 
     return col3
 
@@ -48,15 +53,14 @@ def nozad(request):
     """
 
     db_col_1 = col_1()
-    db_col_2 = col_2("پوست")
-    db_col_3 = col_3("پوست", "پستان")
+    # db_col_2 = col_2("پوست")
+    # db_col_3 = col_3("پوست", "پستان")
 
     return render(
         request=request,
         context={
             'db_col_1': db_col_1,
-            'db_col_2': db_col_2,
-            'db_col_3': db_col_3,
         },
         template_name='icd10/index.html'
-    )
+)
+

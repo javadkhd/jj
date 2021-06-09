@@ -23,7 +23,9 @@ from icd10.views import nozad
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', nozad, name='nozad')
+    path('', nozad), #, name='nozad'
+    # path(r'^ajax_calls/search/', autocomplete),
+
     # path('blog/', include('blog.urls')),
     # path('users/', include('users.urls')),
     # path('', show_all_posts, name='home'),
