@@ -19,12 +19,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from icd10.views import nozad, col_2
+from icd10.views import nozad, col_2, col_3, col_4, col_5
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', nozad), #, name='nozad'
     path('col2/', col_2), #, name='nozad'
+    path('col3/', col_3), #, name='nozad'
+    path('col4/', col_4), #, name='nozad'
+    path('col5/', col_5), #, name='nozad'
     # path('icd10/', include('icd10.urls'))
 
 

@@ -208,14 +208,14 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-12">
-                    <form >
+                    <form>
                         <div class="autocomplete">
                             <h5>نام دستگاه</h5>
                             <input id="myInput" type="text" name="myCountry" placeholder="نام دستگاه"
                                    style="width: 300px">
                         </div>
                     </form>
-                    <form >
+                    <form>
                         <div class="autocomplete">
                             <h5>سر فصل خدمتی</h5>
                             <input id="myInput2" type="text" name="myCountry2" placeholder="سر فصل خدمتی">
@@ -223,29 +223,25 @@
                     </form>
                 </div>
             </div>
-            <div>
-                {{ col2 }}
-            </div>
-            <form  >
+            <form>
                 <div class="autocomplete">
                     <h5>گروه خدمتی</h5>
                     <input id="myInput3" type="text" name="myCountry3" placeholder="گروه خدمتی">
                 </div>
-                <input type="submit">
+
             </form>
-            <form >
+            <form>
                 <div class="autocomplete">
                     <h5>شرح کد</h5>
-                    <input id="myInput4" type="text" name="myCountry3" placeholder="شرح کد">
-                </div>
-                <input type="submit">
-            </form>
-            <form >
-                <div class="autocomplete">
-                    <h5>کد ملی</h5>
-                    <input id="myInput5" type="text" name="myCountry3" placeholder="کد ملی">
+                    <input id="myInput4" type="text" name="myCountry4" placeholder="شرح کد">
                 </div>
             </form>
+
+
+            <h5>کد ملی</h5>
+            <p id="demo">55</p>
+
+
             <div class="container-fluid h-100">
                 <div class="row align-items-end h-100">
                     <div class="col-9 col-md-5 col-lg-3 overlay overlay-show overlay-op-9 overlay-backward py-2 appear-animation"
@@ -424,8 +420,7 @@
 
     {#console.log(col_1.value)#}
     $(document).ready(function () {
-        $('#myInput').click(function () {
-
+        $('.autocomplete').bind("click change", function () {
             var query_text = document.getElementById("myInput");
 
             var ajax_config = {
@@ -449,21 +444,97 @@
         });
     });
 </script>
+
 <script>
 
+    {#console.log(col_1.value)#}
+    $(document).ready(function () {
+        $('.autocomplete').bind("click change", function () {
+            $('.autocomplete').bind("click change", function () {
+                var query_text = document.getElementById("myInput");
+                var query_text2 = document.getElementById("myInput2");
+
+                var ajax_config = {
+                    url: '/col3/',
+                    data: {
+                        jj: query_text.value,
+                        jj2: query_text2.value,
+                    },
+                    method: 'get',
+
+
+                    success: function (response) {
+
+                        var countries3 = $(response.results2);
+
+                        autocomplete(document.getElementById("myInput3"), countries3);
+                    }
+
+
+                };
+                $.ajax(ajax_config);
+            });
+        });
+    });
 </script>
-<!--<script>-->
+
+<script>
+
+    $(document).ready(function () {
+        $('.autocomplete').bind("click change", function () {
+            $('.autocomplete').bind("click change", function () {
+                $('.autocomplete').bind("click change", function () {
+                    var query_text = document.getElementById("myInput");
+                    var query_text2 = document.getElementById("myInput2");
+                    var query_text3 = document.getElementById("myInput3");
+
+                    var ajax_config = {
+                        url: '/col4/',
+                        data: {
+                            jj: query_text.value,
+                            jj2: query_text2.value,
+                            jj3: query_text3.value,
+                        },
+                        method: 'get',
 
 
-<!--    var countries3 = {-->
-<!--    {-->
-<!--        db_col_3 | safe-->
-<!--    }-->
-<!--    }-->
-<!--    ;-->
+                        success: function (response) {
 
-<!--    autocomplete(document.getElementById("myInput3"), countries3);-->
-<!--</script>-->
+                            var countries4 = $(response.results3);
+
+                            autocomplete(document.getElementById("myInput4"), countries4);
+                        }
+
+
+                    };
+                    $.ajax(ajax_config);
+                });
+            });
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $('.autocomplete').bind("click change", function () {
+            var query_text4 = document.getElementById("myInput4");
+
+            $.ajax({
+                url: '/col5/',
+                data: {
+                    jj4: query_text4.value,
+                },
+                method: 'get',
+
+                {#cache: false#}
+            })
+                .done(function (response) {
+                    $("#demo").append(response.res);
+                });
+        });
+    });
+</script>
 
 <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
 <script>
