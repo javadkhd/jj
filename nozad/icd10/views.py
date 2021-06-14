@@ -1,7 +1,10 @@
+import re
+
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import connection
 import sqlite3
+from collections import defaultdict
 
 
 def col_1():
@@ -19,91 +22,23 @@ def col_1():
     return col11
 
 
-def col_2(request):
+def col_10(request):
+
+    term = request.GET.get('term', None)
+    strings = f'SELECT "شرح کد(Value)" FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{term}%"'
+
     con = sqlite3.connect('db.sqlite3')
     cursorObj = con.cursor()
-
-    value2 = request.GET.get('jj', None)
-    cursorObj.execute('SELECT "سرفصل خدمتی" FROM Sheet۱ where دستگاه = "%s"' % (value2))
-
-    col2 = list(set(cursorObj.fetchall()))
-    # col22 = list()
-    # for item in col2:
-    #     col22.append(item[0].strip())
-    col2 = list(map(lambda it: it[0].strip(), col2))
+    cursorObj.execute(strings)
+    explanations = cursorObj.fetchall()
+    # print(explanations)
 
     return JsonResponse(
         {
-            'results': col2,
+            'explanations': explanations,
         }
     )
 
-
-def col_3(request):
-    con = sqlite3.connect('db.sqlite3')
-    cursorObj = con.cursor()
-
-    value2 = request.GET.get('jj', None)
-    value3 = request.GET.get('jj2', None)
-
-    cursorObj.execute(
-        'SELECT "گروه خدمتی" FROM Sheet۱ where دستگاه = "%s" and "سرفصل خدمتی" = "%s" ' % (value2, value3))
-
-    col3 = list(set(cursorObj.fetchall()))
-
-    col3 = list(map(lambda it: it[0].strip(), col3))
-
-    return JsonResponse(
-        {
-
-            'results2': col3,
-        }
-    )
-
-
-def col_4(request):
-    con = sqlite3.connect('db.sqlite3')
-    cursorObj = con.cursor()
-
-    value2 = request.GET.get('jj', None)
-    value3 = request.GET.get('jj2', None)
-    value4 = request.GET.get('jj3', None)
-
-    cursorObj.execute(
-        'SELECT "شرح کد(Value)" FROM Sheet۱ where دستگاه = "%s" and "سرفصل خدمتی" = "%s" and "گروه خدمتی" = "%s" ' % (
-            value2, value3, value4))
-
-    col4 = list(set(cursorObj.fetchall()))
-
-    col4 = list(map(lambda it: it[0].strip(), col4))
-
-    return JsonResponse(
-        {
-
-            'results3': col4,
-        }
-    )
-
-
-def col_5(request):
-    con = sqlite3.connect('db.sqlite3')
-    cursorObj = con.cursor()
-    value5 = request.GET.get('jj4', None)
-
-    cursorObj.execute( 'SELECT "کدملی(Code)" FROM Sheet۱ where "شرح کد(Value)" = "%s" ' % (value5) )
-
-    col5 = list(set(cursorObj.fetchall()))
-
-    # col5 = list(map(lambda it: it[0].strip(), col5))
-    # col5 = ["455655756"]
-    print(col5)
-
-    # print(col5)
-    return JsonResponse(
-        {
-            'res' : col5
-        }
-    )
 
 
 def nozad(request):

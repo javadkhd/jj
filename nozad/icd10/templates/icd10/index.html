@@ -206,30 +206,30 @@
                             class="font-weight-extra-bold mx-5">جستجو در بین کدهای کتاب ICD10</strong></h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <form>
-                        <div class="autocomplete">
-                            <h5>نام دستگاه</h5>
-                            <input id="myInput" type="text" name="myCountry" placeholder="نام دستگاه"
-                                   style="width: 300px">
-                        </div>
-                    </form>
-                    <form>
-                        <div class="autocomplete">
-                            <h5>سر فصل خدمتی</h5>
-                            <input id="myInput2" type="text" name="myCountry2" placeholder="سر فصل خدمتی">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <form>
-                <div class="autocomplete">
-                    <h5>گروه خدمتی</h5>
-                    <input id="myInput3" type="text" name="myCountry3" placeholder="گروه خدمتی">
-                </div>
-
-            </form>
+            {#            <div class="row">#}
+            {#                <div class="col-lg-6 col-md-12">#}
+            {#                    <form>#}
+            {#                        <div class="autocomplete">#}
+            {#                            <h5>نام دستگاه</h5>#}
+            {#                            <input id="myInput" type="text" name="myCountry" placeholder="نام دستگاه"#}
+            {#                                   style="width: 300px">#}
+            {#                        </div>#}
+            {#                    </form>#}
+            {#                    <form>#}
+            {#                        <div class="autocomplete">#}
+            {#                            <h5>سر فصل خدمتی</h5>#}
+            {#                            <input id="myInput2" type="text" name="myCountry2" placeholder="سر فصل خدمتی">#}
+            {#                        </div>#}
+            {#                    </form>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <form>#}
+            {#                <div class="autocomplete">#}
+            {#                    <h5>گروه خدمتی</h5>#}
+            {#                    <input id="myInput3" type="text" name="myCountry3" placeholder="گروه خدمتی">#}
+            {#                </div>#}
+            {##}
+            {#            </form>#}
             <form>
                 <div class="autocomplete">
                     <h5>شرح کد</h5>
@@ -237,9 +237,21 @@
                 </div>
             </form>
 
+            {#            <form>#}
+            <form>
+                <div class="autocomplete">
+                    <h5>توضیحات</h5>
+                        <p id="myInput5" type="text" name="myCountry5" placeholder="توضیحات"></p>
+                </div>
+
+
+            </form>
+
+            {#            </form>#}
+
 
             <h5>کد ملی</h5>
-            <p id="demo">55</p>
+            <p id="demo"></p>
 
 
             <div class="container-fluid h-100">
@@ -306,235 +318,349 @@
 
 
 <script>
-    function autocomplete(inp, arr) {
-        /*the autocomplete function takes two arguments,
-        the text field element and an array of possible autocompleted values:*/
-        var currentFocus;
-        /*execute a function when someone writes in the text field:*/
-        inp.addEventListener("input", function (e) {
-            var a, b, i, val = this.value;
-            /*close any already open lists of autocompleted values*/
-            closeAllLists();
-            if (!val) {
-                return false;
-            }
-            currentFocus = -1;
-            /*create a DIV element that will contain the items (values):*/
-            a = document.createElement("DIV");
-            a.setAttribute("id", this.id + "autocomplete-list");
-            a.setAttribute("class", "autocomplete-items");
-            /*append the DIV element as a child of the autocomplete container:*/
-            this.parentNode.appendChild(a);
-            /*for each item in the array...*/
-            for (i = 0; i < arr.length; i++) {
-                /*check if the item starts with the same letters as the text field value:*/
-                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                    /*create a DIV element for each matching element:*/
-                    b = document.createElement("DIV");
-                    /*make the matching letters bold:*/
-                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                    b.innerHTML += arr[i].substr(val.length);
-                    /*insert a input field that will hold the current array item's value:*/
-                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                    /*execute a function when someone clicks on the item value (DIV element):*/
-                    b.addEventListener("click", function (e) {
-                        /*insert the value for the autocomplete text field:*/
-                        inp.value = this.getElementsByTagName("input")[0].value;
-                        /*close the list of autocompleted values,
-                        (or any other open lists of autocompleted values:*/
-                        closeAllLists();
-                    });
-                    a.appendChild(b);
-                }
-            }
-        });
-        /*execute a function presses a key on the keyboard:*/
-        inp.addEventListener("keydown", function (e) {
-            var x = document.getElementById(this.id + "autocomplete-list");
-            if (x) x = x.getElementsByTagName("div");
-            if (e.keyCode == 40) {
-                /*If the arrow DOWN key is pressed,
-                increase the currentFocus variable:*/
-                currentFocus++;
-                /*and and make the current item more visible:*/
-                addActive(x);
-            } else if (e.keyCode == 38) { //up
-                /*If the arrow UP key is pressed,
-                decrease the currentFocus variable:*/
-                currentFocus--;
-                /*and and make the current item more visible:*/
-                addActive(x);
-            } else if (e.keyCode == 13) {
-                /*If the ENTER key is pressed, prevent the form from being submitted,*/
-                e.preventDefault();
-                if (currentFocus > -1) {
-                    /*and simulate a click on the "active" item:*/
-                    if (x) x[currentFocus].click();
-                }
-            }
-        });
-
-        function addActive(x) {
-            /*a function to classify an item as "active":*/
-            if (!x) return false;
-            /*start by removing the "active" class on all items:*/
-            removeActive(x);
-            if (currentFocus >= x.length) currentFocus = 0;
-            if (currentFocus < 0) currentFocus = (x.length - 1);
-            /*add class "autocomplete-active":*/
-            x[currentFocus].classList.add("autocomplete-active");
-        }
-
-        function removeActive(x) {
-            /*a function to remove the "active" class from all autocomplete items:*/
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.remove("autocomplete-active");
-            }
-        }
-
-        function closeAllLists(elmnt) {
-            /*close all autocomplete lists in the document,
-            except the one passed as an argument:*/
-            var x = document.getElementsByClassName("autocomplete-items");
-            for (var i = 0; i < x.length; i++) {
-                if (elmnt != x[i] && elmnt != inp) {
-                    x[i].parentNode.removeChild(x[i]);
-                }
-            }
-        }
-
-        /*execute a function when someone clicks in the document:*/
-        document.addEventListener("click", function (e) {
-            closeAllLists(e.target);
-        });
-    }
-</script>
-
-<script>
-    var countries = {{ db_col_1 | safe }};
-
-    autocomplete(document.getElementById("myInput"), countries);
-</script>
-
-<script>
-
-    {#console.log(col_1.value)#}
     $(document).ready(function () {
-        $('.autocomplete').bind("click change", function () {
-            var query_text = document.getElementById("myInput");
-
-            var ajax_config = {
-                url: '/col2/',
-                data: {
-                    jj: query_text.value
-                },
-                method: 'get',
-
-
-                success: function (response) {
-
-                    var countries2 = $(response.results);
-
-                    autocomplete(document.getElementById("myInput2"), countries2);
-                }
-
-
-            };
-            $.ajax(ajax_config);
-        });
-    });
-</script>
-
-<script>
-
-    {#console.log(col_1.value)#}
-    $(document).ready(function () {
-        $('.autocomplete').bind("click change", function () {
-            $('.autocomplete').bind("click change", function () {
-                var query_text = document.getElementById("myInput");
-                var query_text2 = document.getElementById("myInput2");
-
-                var ajax_config = {
-                    url: '/col3/',
-                    data: {
-                        jj: query_text.value,
-                        jj2: query_text2.value,
-                    },
-                    method: 'get',
-
-
-                    success: function (response) {
-
-                        var countries3 = $(response.results2);
-
-                        autocomplete(document.getElementById("myInput3"), countries3);
-                    }
-
-
-                };
-                $.ajax(ajax_config);
-            });
-        });
-    });
-</script>
-
-<script>
-
-    $(document).ready(function () {
-        $('.autocomplete').bind("click change", function () {
-            $('.autocomplete').bind("click change", function () {
-                $('.autocomplete').bind("click change", function () {
-                    var query_text = document.getElementById("myInput");
-                    var query_text2 = document.getElementById("myInput2");
-                    var query_text3 = document.getElementById("myInput3");
-
-                    var ajax_config = {
-                        url: '/col4/',
-                        data: {
-                            jj: query_text.value,
-                            jj2: query_text2.value,
-                            jj3: query_text3.value,
-                        },
-                        method: 'get',
-
-
-                        success: function (response) {
-
-                            var countries4 = $(response.results3);
-
-                            autocomplete(document.getElementById("myInput4"), countries4);
-                        }
-
-
-                    };
-                    $.ajax(ajax_config);
-                });
-            });
-        });
-    });
-</script>
-
-
-<script>
-    $(document).ready(function () {
-        $('.autocomplete').bind("click change", function () {
-            var query_text4 = document.getElementById("myInput4");
+        $('.autocomplete').bind("change click", function () {
+            var term = document.getElementById("myInput4");
 
             $.ajax({
-                url: '/col5/',
+                url: '/col10/',
                 data: {
-                    jj4: query_text4.value,
+                    term: term.value,
                 },
                 method: 'get',
 
-                {#cache: false#}
             })
                 .done(function (response) {
-                    $("#demo").append(response.res);
+                    {#alert("dfdfd")#}
+                    {#autocomplete(document.getElementById("myInput5"), response.list_of_description);#}
+                    $("#myInput5").html(response.explanations);
                 });
         });
     });
 </script>
+
+{#Description#}
+
+
+{##}
+{#<script>#}
+{#    function autocomplete(inp, arr) {#}
+{#        /*the autocomplete function takes two arguments,#}
+{#        the text field element and an array of possible autocompleted values:*/#}
+{#        var currentFocus;#}
+{#        /*execute a function when someone writes in the text field:*/#}
+{#        inp.addEventListener("input", function (e) {#}
+{#            var a, b, i, val = this.value;#}
+{#            /*close any already open lists of autocompleted values*/#}
+{#            closeAllLists();#}
+{#            if (!val) {#}
+{#                return false;#}
+{#            }#}
+{#            currentFocus = -1;#}
+{#            /*create a DIV element that will contain the items (values):*/#}
+{#            a = document.createElement("DIV");#}
+{#            a.setAttribute("id", this.id + "autocomplete-list");#}
+{#            a.setAttribute("class", "autocomplete-items");#}
+{#            /*append the DIV element as a child of the autocomplete container:*/#}
+{#            this.parentNode.appendChild(a);#}
+{#            /*for each item in the array...*/#}
+{#            for (i = 0; i < arr.length; i++) {#}
+{#                /*check if the item starts with the same letters as the text field value:*/#}
+{#                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {#}
+{#                    /*create a DIV element for each matching element:*/#}
+{#                    b = document.createElement("DIV");#}
+{#                    /*make the matching letters bold:*/#}
+{#                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";#}
+{#                    b.innerHTML += arr[i].substr(val.length);#}
+{#                    /*insert a input field that will hold the current array item's value:*/#}
+{#                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";#}
+{#                    /*execute a function when someone clicks on the item value (DIV element):*/#}
+{#                    b.addEventListener("click", function (e) {#}
+{#                        /*insert the value for the autocomplete text field:*/#}
+{#                        inp.value = this.getElementsByTagName("input")[0].value;#}
+{#                        /*close the list of autocompleted values,#}
+{#                        (or any other open lists of autocompleted values:*/#}
+{#                        closeAllLists();#}
+{#                    });#}
+{#                    a.appendChild(b);#}
+{#                }#}
+{#            }#}
+{#        });#}
+{#        /*execute a function presses a key on the keyboard:*/#}
+{#        inp.addEventListener("keydown", function (e) {#}
+{#            var x = document.getElementById(this.id + "autocomplete-list");#}
+{#            if (x) x = x.getElementsByTagName("div");#}
+{#            if (e.keyCode == 40) {#}
+{#                /*If the arrow DOWN key is pressed,#}
+{#                increase the currentFocus variable:*/#}
+{#                currentFocus++;#}
+{#                /*and and make the current item more visible:*/#}
+{#                addActive(x);#}
+{#            } else if (e.keyCode == 38) { //up#}
+{#                /*If the arrow UP key is pressed,#}
+{#                decrease the currentFocus variable:*/#}
+{#                currentFocus--;#}
+{#                /*and and make the current item more visible:*/#}
+{#                addActive(x);#}
+{#            } else if (e.keyCode == 13) {#}
+{#                /*If the ENTER key is pressed, prevent the form from being submitted,*/#}
+{#                e.preventDefault();#}
+{#                if (currentFocus > -1) {#}
+{#                    /*and simulate a click on the "active" item:*/#}
+{#                    if (x) x[currentFocus].click();#}
+{#                }#}
+{#            }#}
+{#        });#}
+{##}
+{#        function addActive(x) {#}
+{#            /*a function to classify an item as "active":*/#}
+{#            if (!x) return false;#}
+{#            /*start by removing the "active" class on all items:*/#}
+{#            removeActive(x);#}
+{#            if (currentFocus >= x.length) currentFocus = 0;#}
+{#            if (currentFocus < 0) currentFocus = (x.length - 1);#}
+{#            /*add class "autocomplete-active":*/#}
+{#            x[currentFocus].classList.add("autocomplete-active");#}
+{#        }#}
+{##}
+{#        function removeActive(x) {#}
+{#            /*a function to remove the "active" class from all autocomplete items:*/#}
+{#            for (var i = 0; i < x.length; i++) {#}
+{#                x[i].classList.remove("autocomplete-active");#}
+{#            }#}
+{#        }#}
+{##}
+{#        function closeAllLists(elmnt) {#}
+{#            /*close all autocomplete lists in the document,#}
+{#            except the one passed as an argument:*/#}
+{#            var x = document.getElementsByClassName("autocomplete-items");#}
+{#            for (var i = 0; i < x.length; i++) {#}
+{#                if (elmnt != x[i] && elmnt != inp) {#}
+{#                    x[i].parentNode.removeChild(x[i]);#}
+{#                }#}
+{#            }#}
+{#        }#}
+{##}
+{#        /*execute a function when someone clicks in the document:*/#}
+{#        document.addEventListener("click", function (e) {#}
+{#            closeAllLists(e.target);#}
+{#        });#}
+{#    }#}
+{#</script>#}
+{##}
+{#<script>#}
+{#    var countries = {{ db_col_1 | safe }};#}
+{##}
+{#    autocomplete(document.getElementById("myInput"), countries);#}
+{#</script>#}
+{##}
+{#<script>#}
+{##}
+{#    $(document).ready(function () {#}
+{#        $('.autocomplete').bind("click change", function () {#}
+{#            var query_text = document.getElementById("myInput");#}
+{##}
+{#            var ajax_config = {#}
+{#                url: '/col2/',#}
+{#                data: {#}
+{#                    jj: query_text.value#}
+{#                },#}
+{#                method: 'get',#}
+{##}
+{##}
+{#                success: function (response) {#}
+{##}
+{#                    var countries2 = $(response.results);#}
+{##}
+{#                    if (countries2) {#}
+{#                        autocomplete(document.getElementById("myInput2"), countries2);#}
+{#                    } else {#}
+{#                        $("#myInput2").html("")#}
+{#                    }#}
+{#                    ;#}
+{##}
+{#                }#}
+{##}
+{##}
+{#            };#}
+{##}
+{#            $.ajax(ajax_config)#}
+{##}
+{#        });#}
+{#    });#}
+{#</script>#}
+{##}
+{#<script>#}
+{##}
+{#console.log(col_1.value)#}
+{#    $(document).ready(function () {#}
+{#        $('.autocomplete').bind("click change", function () {#}
+{#            $('.autocomplete').bind("click change", function () {#}
+{#                var query_text = document.getElementById("myInput");#}
+{#                var query_text2 = document.getElementById("myInput2");#}
+{##}
+{#                var ajax_config = {#}
+{#                    url: '/col3/',#}
+{#                    data: {#}
+{#                        jj: query_text.value,#}
+{#                        jj2: query_text2.value,#}
+{#                    },#}
+{#                    method: 'get',#}
+{##}
+{##}
+{#                    success: function (response) {#}
+{##}
+{#                        var countries3 = $(response.results2);#}
+{##}
+{#                        autocomplete(document.getElementById("myInput3"), countries3);#}
+{#                    }#}
+{##}
+{##}
+{#                };#}
+{#                $.ajax(ajax_config);#}
+{#            });#}
+{#        });#}
+{#    });#}
+{#</script>#}
+{##}
+{#<script>#}
+{##}
+{#    $(document).ready(function () {#}
+{#        $('.autocomplete').bind("click change", function () {#}
+{#            $('.autocomplete').bind("click change", function () {#}
+{#                $('.autocomplete').bind("click change", function () {#}
+{#                    var query_text = document.getElementById("myInput");#}
+{#                    var query_text2 = document.getElementById("myInput2");#}
+{#                    var query_text3 = document.getElementById("myInput3");#}
+{##}
+{#                    var ajax_config = {#}
+{#                        url: '/col4/',#}
+{#                        data: {#}
+{#                            jj: query_text.value,#}
+{#                            jj2: query_text2.value,#}
+{#                            jj3: query_text3.value,#}
+{#                        },#}
+{#                        method: 'get',#}
+{##}
+{##}
+{#                        success: function (response) {#}
+{##}
+{#                            var countries4 = $(response.results3);#}
+{##}
+{#                            autocomplete(document.getElementById("myInput4"), countries4);#}
+{#                        }#}
+{##}
+{##}
+{#                    };#}
+{#                    $.ajax(ajax_config);#}
+{#                });#}
+{#            });#}
+{#        });#}
+{#    });#}
+{#</script>#}
+{##}
+{##}
+{#<script>#}
+{#    $(document).ready(function () {#}
+{#        $('.autocomplete').bind("change click", function () {#}
+{#            var query_text4 = document.getElementById("myInput4");#}
+{##}
+{#            $.ajax({#}
+{#                url: '/col5/',#}
+{#                data: {#}
+{#                    jj4: query_text4.value,#}
+{#                },#}
+{#                method: 'get',#}
+{##}
+{#cache: false#}
+{#            })#}
+{#                .done(function (response) {#}
+{#                    autocomplete(document.getElementById("myInput5"), response.list_of_description);#}
+{##}
+{#$("#demo").html(response.res);#}
+{#                });#}
+{#        });#}
+{#    });#}
+{#</script>#}
+{##}
+{##}
+{#<script>#}
+{#    $(document).ready(function () {#}
+{#        $('.autocomplete').bind("change click", function () {#}
+{#            var query_text4 = document.getElementById("myInput4");#}
+{##}
+{#            $.ajax({#}
+{#                url: '/col5/',#}
+{#                data: {#}
+{#                    jj4: query_text4.value,#}
+{#                },#}
+{#                method: 'get',#}
+{##}
+{#cache: false#}
+{#            })#}
+{#                .done(function (response) {#}
+{#                    var query_text4 = document.getElementById("myInput5");#}
+{##}
+{#                    $("#demo").html(response.reverse_akbar[query_text4]);#}
+{#                });#}
+{#        });#}
+{#    });#}
+{#</script>#}
+
+
+{#<script>#}
+{#    $(document).ready(function () {#}
+{#        $('#demo').bind("change click", function () {#}
+{#            var query_text4 = document.getElementById("demo");#}
+{##}
+{#            $.ajax({#}
+{#                url: '/col6/',#}
+{#                data: {#}
+{#                    jj4: query_text4.value,#}
+{#                },#}
+{#                method: 'get',#}
+{##}
+{#cache: false#}
+{#            })#}
+{#                .done(function (response) {#}
+{#                    var countries4 = $(response.res);#}
+{##}
+{#                    if (countries4) {#}
+{#                        var reg1 = \d{6} تا \d{6};#}
+{#                        var reg2 = \d{6} -\d{6};#}
+{#                        var reg3 = \d{6};#}
+{##}
+{#                        var Array1 = countries4.match(reg1);#}
+{#                        var Array2 = countries4.match(reg2);#}
+{#                        var Array3 = countries4.match(reg3);#}
+{##}
+{########################################################}
+{##}
+{##}
+{#                        $.ajax({#}
+{#                            url: '/col7/',#}
+{#                            data: {#}
+{#                                jj5: Array1,#}
+{#                                jj6: Array2,#}
+{#                                jj7: Array3,#}
+{#                            },#}
+{#                            method: 'get',#}
+{##}
+{#                        })#}
+{#                            .done(function (response) {#}
+{#                                $("#myInput5").html(response.res);#}
+{#                            });#}
+{##}
+{##}
+{########################################################}
+{##}
+{#                    };#}
+{##}
+{#                });#}
+{#        });#}
+{#    });#}
+{#</script>#}
+
 
 <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
 <script>
