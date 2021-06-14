@@ -41,6 +41,7 @@ def col_10(request):
 
 
 
+
 def nozad(request):
     """
     This view will send data to page
