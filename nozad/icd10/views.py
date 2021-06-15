@@ -23,9 +23,17 @@ def col_1():
 
 
 def col_10(request):
-
     term = request.GET.get('term', None)
-    strings = f'SELECT "شرح کد(Value)" FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{term}%"'
+    term = term.split()
+
+    strings = 'SELECT "شرح کد(Value)" FROM Sheet۱ WHERE "شرح کد(Value)"'
+
+    for word in term:
+        strings += f' LIKE "%{word}%"'
+        if word != term[-1]:
+            strings += ' AND "شرح کد(Value)"'
+
+
 
     con = sqlite3.connect('db.sqlite3')
     cursorObj = con.cursor()
@@ -39,6 +47,52 @@ def col_10(request):
         }
     )
 
+def col_11(request):
+    explanation = request.GET.get('explanation', None)
+    explanation = explanation.split()
+    explanation.remove('Select')
+    explanation = " ".join(explanation)
+
+    con = sqlite3.connect('db.sqlite3')
+    cursorObj = con.cursor()
+
+    query_text = f'SELECT توضیحات FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{explanation}%"'
+
+
+    cursorObj.execute(query_text)
+    descriptions = cursorObj.fetchall()
+
+    # print(descriptions)
+    # if descriptions:
+    #     descriptions.append(explanation)
+    # print(descriptions)
+
+    return JsonResponse(
+        {
+            'descriptions': descriptions,
+        }
+    )
+
+# def col_12(request):
+#     description = request.GET.get('description', None)
+#     description = description.split()
+#     description.remove('Select')
+#     description = " ".join(description)
+#     # print(description)
+#     con = sqlite3.connect('db.sqlite3')
+#     cursorObj = con.cursor()
+#
+#     query_text = f'SELECT توضیحات FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{description}%"'
+#
+#
+#     cursorObj.execute(query_text)
+#     descriptions = cursorObj.fetchall()
+#
+#     return JsonResponse(
+#         {
+#             'descriptions': descriptions,
+#         }
+#     )
 
 
 
@@ -56,3 +110,5 @@ def nozad(request):
         },
         template_name='icd10/index.html'
     )
+
+

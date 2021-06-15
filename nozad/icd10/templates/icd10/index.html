@@ -238,19 +238,16 @@
 
                 </div>
             </form>
-            <table id="results"></table>
+            <table id="explanations" class="text-color-dark"></table>
 
 
-            <form>
-                <div class="autocomplete">
-                    <h5>توضیحات</h5>
-                    <p id="myInput5" type="text" name="myCountry5" placeholder="توضیحات"></p>
-                </div>
+            <div>
+                <h5>توضیحات</h5>
+                <table id="descriptions" class="text-color-dark"></table>
 
 
-            </form>
-
-            {#            </form>#}
+                {#                <p id="myInput5" type="text" name="myCountry5" placeholder="توضیحات"></p>#}
+            </div>
 
 
             <h5>کد ملی</h5>
@@ -322,20 +319,21 @@
 
 <script>
 
-    function createTableByJqueryEach(data) {
+    function createTableByJqueryEach(data, id) {
 
 
-        var eTable = "<table><thead><tr><th colspan='3'>Created by Jquery each</th></tr><tr><th>Name</th><th>Title</th><th>Salary</th</tr></thead><tbody>"
+        var eTable = "<table><thead><tr><th colspan='3'>لیست موارد مشابه</th></tr><tr><th>انتخاب</th><th>عنوان</th></tr></thead><tbody>"
         $.each(data, function (index, row) {
 
             eTable += "<tr>";
             $.each(row, function (key, value) {
+                eTable += "<td><button class=\"btnSelect\">Select</button></td>";
                 eTable += "<td>" + value + "</td>";
             });
             eTable += "</tr>";
         });
         eTable += "</tbody></table>";
-        $('#results').html(eTable);
+        $(id).html(eTable);
     }
 
     function createTableByForLoop(data) {
@@ -343,17 +341,17 @@
         for (var i = 0; i < data.length; i += 3) {
             eTable += "<tr>";
             eTable += "<td>" + data[i] + "</td>";
-            eTable += "<td>" + data[i + 1] + "</td>";
-            eTable += "<td>" + data[i + 2] + "</td>";
+            {#eTable += "<td>" + data[i + 1] + "</td>";#}
+            {#eTable += "<td>" + data[i + 2] + "</td>";#}
             eTable += "</tr>";
         }
         eTable += "</tbody></table>";
-        $('#results').html(eTable);
+        $('#explanations').html(eTable);
     }
 
 
     $(document).ready(function () {
-        $('#myInput4').bind("change click", function () {
+        $('#myInput4').on("keypress keydown OnChange", function () {
 
             var term = document.getElementById("myInput4");
 
@@ -368,8 +366,10 @@
                 .done(function (response) {
                     var explanations = response.explanations;
                     {#alert("ssss")#}
-                    createTableByForLoop(explanations);
-                    {#createTableByJqueryEach(explanations);#}
+                    {#createTableByForLoop(explanations);#}
+
+
+                    createTableByJqueryEach(explanations, "#explanations");
 
                 });
 
@@ -378,6 +378,71 @@
     });
 </script>
 
+<script>
+    $(document).ready(function () {
+
+        // code to read selected table row cell data (values).
+        $("#explanations").on('click', '.btnSelect', function () {
+            // get the current row
+            var currentRow = $(this).closest("tr");
+
+            var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+            var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+            var col3 = currentRow.find("td:eq(2)").text(); // get current row 3rd TD
+            var explanation = col1 + "\n" + col2 + "\n" + col3;
+
+            {#alert(data);#}
+            $.ajax({
+                url: '/col11/',
+                data: {
+                    explanation: explanation,
+                },
+                method: 'get',
+
+            })
+                .done(function (response) {
+                    var descriptions = response.descriptions;
+
+                    createTableByJqueryEach(descriptions, "#descriptions");
+
+                });
+        });
+    });
+
+</script>
+
+
+{#<script>#}
+{##}
+{#    $(document).ready(function () {#}
+{##}
+{#        // code to read selected table row cell data (values).#}
+{#        $("#descriptions").on('click', '.btnSelect', function () {#}
+{#            // get the current row#}
+{#            var currentRow = $(this).closest("tr");#}
+{##}
+{#            var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value#}
+{#            var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD#}
+{#            var col3 = currentRow.find("td:eq(2)").text(); // get current row 3rd TD#}
+{#            var description = col1 + "\n" + col2 + "\n" + col3;#}
+{##}
+{#            alert(description);#}
+{#            $.ajax({#}
+{#                url: '/col12/',#}
+{#                data: {#}
+{#                    description: description,#}
+{#                },#}
+{#                method: 'get',#}
+{##}
+{#            })#}
+{#                .done(function (response) {#}
+{#                    var code = response.code;#}
+{#                    alert(code);#}
+{##}
+{#                });#}
+{#        });#}
+{#    });#}
+{#</script>#}
 {#Description#}
 
 
