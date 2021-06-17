@@ -33,8 +33,6 @@ def col_10(request):
         if word != term[-1]:
             strings += ' AND "شرح کد(Value)"'
 
-
-
     con = sqlite3.connect('db.sqlite3')
     cursorObj = con.cursor()
     cursorObj.execute(strings)
@@ -47,6 +45,7 @@ def col_10(request):
         }
     )
 
+
 def col_11(request):
     explanation = request.GET.get('explanation', None)
     explanation = explanation.split()
@@ -56,22 +55,87 @@ def col_11(request):
     con = sqlite3.connect('db.sqlite3')
     cursorObj = con.cursor()
 
-    query_text = f'SELECT توضیحات FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{explanation}%"'
-
+    query_text = f'SELECT "کدملی(Code)" FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{explanation}%"'
 
     cursorObj.execute(query_text)
-    descriptions = cursorObj.fetchall()
+    orginal_code = cursorObj.fetchall()
 
-    # print(descriptions)
-    # if descriptions:
-    #     descriptions.append(explanation)
-    # print(descriptions)
+    akbar = set()
+    akbar.add(orginal_code[0][0])
+
+    query_text = f'SELECT توضیحات FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{explanation}%"'
+
+    cursorObj.execute(query_text)
+    description = cursorObj.fetchall()
+    description = description[0][0]
+
+    if description:
+        reg1 = re.findall(r"(\d{6})", description)  # adad haye tak ra peydamikonad
+        reg1 = list(map(int, reg1))
+        reg2 = re.findall(r"(\d{6}) تا (\d{6})", description)  # exp : 100010 ta 100020
+        reg2 = list(map(int, reg2))
+        reg3 = re.findall(r"(\d{6})\s*-\s*(\d{6})", description)  # exp : 100010-100020
+        reg3 = list(map(int, reg3))
+        reg4 = re.findall(r"(\d{6}) به بعد", description)  # be baad
+        reg4 = list(map(int, reg4))
+
+        # print(reg2)
+        # print(type(reg2))
+        # print(type(reg2[0]))
+
+
+        if reg1:
+            for i in reg1:
+                akbar.add(i)
+
+        if reg2:
+            for i in range(min(reg2), max(reg2)):
+                akbar.add(i)
+
+        if reg3:
+            for i in range(min(reg3), max(reg3)):
+                akbar.add(i)
+
+        if reg4:
+            for i in range(reg4[0], reg4[0] + 10):
+                akbar.add(i)
+
+    print(akbar)
+
+    descriptions = list()
+    for i in akbar:
+        query_text = f'SELECT "شرح کد(Value)" FROM Sheet۱ WHERE "کدملی(Code)" LIKE "%{i}%"'
+
+        cursorObj.execute(query_text)
+        descriptions.append(cursorObj.fetchall())
 
     return JsonResponse(
         {
             'descriptions': descriptions,
         }
     )
+
+
+def col_12(request):
+    explanation = request.GET.get('explanation', None)
+    explanation = explanation.split()
+    explanation.remove('Select')
+    explanation = " ".join(explanation)
+
+    con = sqlite3.connect('db.sqlite3')
+    cursorObj = con.cursor()
+
+    query_text = f'SELECT "کدملی(Code)" FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{explanation}%"'
+
+    cursorObj.execute(query_text)
+    code = cursorObj.fetchall()
+
+    return JsonResponse(
+        {
+            'code': code,
+        }
+    )
+
 
 # def col_12(request):
 #     description = request.GET.get('description', None)
@@ -95,7 +159,6 @@ def col_11(request):
 #     )
 
 
-
 def nozad(request):
     """
     This view will send data to page
@@ -110,5 +173,3 @@ def nozad(request):
         },
         template_name='icd10/index.html'
     )
-
-

@@ -411,6 +411,39 @@
 
 </script>
 
+<script>
+        $(document).ready(function () {
+
+        // code to read selected table row cell data (values).
+        $("#descriptions").on('click', '.btnSelect', function () {
+            // get the current row
+            var currentRow = $(this).closest("tr");
+
+            var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+            var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+            var col3 = currentRow.find("td:eq(2)").text(); // get current row 3rd TD
+            var explanation = col1 + "\n" + col2 + "\n" + col3;
+
+
+            $.ajax({
+                url: '/col12/',
+                data: {
+                    explanation: explanation,
+                },
+                method: 'get',
+
+            })
+                .done(function (response) {
+                    var code = response.code;
+                    alert(code);
+
+                    {#createTableByJqueryEach(descriptions, "#descriptions");#}
+
+                });
+        });
+    });
+
+</script>
 
 {#<script>#}
 {##}
