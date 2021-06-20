@@ -1,14 +1,14 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html dir="rtl" class="disable-onload-scroll side-header-overlay-full-screen overflow-hidden" lang="">
+<html dir="rtl">
 <head>
 
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>قالب Porto - قالب HTML چند منظوره پورتو</title>
+    <title>Codes of ICD10</title>
 
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="Porto - Responsive HTML5 Template">
@@ -42,10 +42,10 @@
     <link rel="stylesheet" href="{% static 'vendor/rs-plugin/css/navigation.css' %}">
 
     <!-- Demo CSS -->
-
+    <link rel="stylesheet" href="{% static 'css/demos/demo-medical.css' %}}">
 
     <!-- Skin CSS -->
-    <link rel="stylesheet" href="{% static 'css/skins/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skins/skin-medical.css' %}}">
 
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
@@ -53,10 +53,10 @@
     <!-- Head Libs -->
     <script src="{% static 'vendor/modernizr/modernizr.min.js' %}"></script>
 
-
 </head>
-<body class="loading-overlay-showing" data-loading-overlay data-plugin-section-scroll
-      data-plugin-options="{'targetClass': '.section-scroll', 'dotsClass': 'section-scroll-dots-navigation-style-2 section-scroll-dots-navigation-light', 'changeHeaderLogo': true, 'headerLogoDark': 'img/logo-default-slim.png', 'headerLogoLight': 'img/logo-default-slim-dark.png'}">
+<body class="loading-overlay-showing" data-plugin-page-transition data-loading-overlay
+      data-plugin-options="{'hideDelay': 500}"
+>
 <div class="loading-overlay">
     <div class="bounce-loader">
         <div class="bounce1"></div>
@@ -64,126 +64,173 @@
         <div class="bounce3"></div>
     </div>
 </div>
-
-<div class="body bg-dark">
-
-
-    <div class="sticky-wrapper sticky-wrapper-transparent sticky-wrapper-border-bottom bg-transparent"
-         data-plugin-sticky data-plugin-options="{'minWidth': 0, 'stickyStartEffectAt': 1, 'padding': {'top': 0}}">
-        <div class="sticky-body">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-9">
-                        <div class="py-4">
-                            <a href="index.html">
-                                <img alt="Porto" width="82" height="40" src="{% static 'img/jj1.jpeg' %}">
-                            </a>
+<div class="body">
+    <header id="header"
+            class="header-transparent header-semi-transparent header-semi-transparent-dark header-effect-shrink"
+            data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+        <div class="header-body border-top-0 bg-dark box-shadow-none" style="opacity: 0.7">
+            <div class="header-container container">
+                <div class="header-row">
+                    <div class="header-column">
+                        <div class="header-row">
+                            <div class="header-logo">
+                                <a href="index.html">
+                                    <img alt="Porto" width="82" height="40"
+                                         src="{% static 'img/logo-corporate-4.png' %}}">
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-3 text-right">
-                        <button class="hamburguer-btn hamburguer-btn-light" data-set-active="false">
-									<span class="hamburguer">
-										<span></span>
-										<span></span>
-										<span></span>
-									</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <header id="header" class="side-header-overlay-full-screen side-header-hide pt-0"
-            data-plugin-options="{'stickyEnabled': false}">
-
-        <button class="hamburguer-btn hamburguer-btn-light hamburguer-btn-side-header hamburguer-btn-side-header-overlay active"
-                data-set-active="false">
-					<span class="close">
-						<span></span>
-						<span></span>
-					</span>
-        </button>
-
-        <div class="header-body d-flex h-100">
-            <div class="header-column flex-row flex-lg-column justify-content-center h-100">
-                <div class="header-container container d-flex h-100">
-                    <div class="header-row header-row-side-header flex-row h-100">
-                        <div class="side-header-scrollable scrollable colored-slider h-50 mt-5" data-plugin-scrollable>
-                            <div class="scrollable-content">
-                                <div class="header-nav header-nav-light-text header-nav-links header-nav-links-side-header header-nav-links-vertical header-nav-links-vertical-expand header-nav-click-to-open align-self-start">
-                                    <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-4 header-nav-main-sub-effect-1">
-                                        <nav>
-                                            <ul class="nav nav-pills" id="mainNav">
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
-                                                        خانه
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li>
-                                                            <a class="dropdown-item" href="index.html">
-                                                                صفحه اول
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">
-                                                                پیش‌نمایش ها
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
-                                                        صفحات
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-submenu">
-                                                            <a class="dropdown-item" href="#">تماس با ما</a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a class="dropdown-item"
-                                                                       href="">تماس با ما -
-                                                                    پیشرفته</a></li>
-                                                                <li><a class="dropdown-item" href="">تماس
-                                                                    با ما - پایه</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                       href="">تماس با ما -
-                                                                    Recaptcha</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="dropdown-submenu">
-                                                            <a class="dropdown-item" href="#">درباره ما</a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a class="dropdown-item"
-                                                                       href="">درباره ما -
-                                                                    پیشرفته</a></li>
-                                                                <li><a class="dropdown-item" href="">درباره
-                                                                    ما - پایه</a></li>
-                                                                <li><a class="dropdown-item" href="">درباره
-                                                                    من</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
-                                                        نمونه‌کارها
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-submenu">
-                                                            <a class="dropdown-item" href="#">جزئیات پروژه</a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a class="dropdown-item"
-                                                                       href="">اسلایدر
-                                                                    عریض</a></li>
-                                                                <li><a class="dropdown-item"
-                                                                       href="">اسلایدر
-                                                                    کوچک</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </nav>
+                    <div class="header-column justify-content-end">
+                        <div class="header-row">
+                            <div class="header-nav header-nav-links header-nav-dropdowns-dark header-nav-light-text order-2 order-lg-1">
+                                <div class="header-nav-main header-nav-main-mobile-dark header-nav-main-square header-nav-main-font-md header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle" href="index.html">
+                                                    خانه
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item" href="index.html">
+                                                            صفحه اول
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="index.html#demos">
+                                                            پیش‌نمایش ها
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a class="dropdown-item" href="#">کلاسیک</a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="index-classic.html">کلاسیک
+                                                                - اصلی</a></li>
+                                                            <li><a class="dropdown-item"
+                                                                   href="index-classic-color.html">کلاسیک - رنگی</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                   href="index-classic-light.html">کلاسیک - روشن</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                   href="index-classic-video.html">کلاسیک - ویدئو</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                   href="index-classic-video-light.html">کلاسیک - ویدئو
+                                                                - روشن</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a class="dropdown-item" href="#">شرکتی <span
+                                                                class="tip tip-dark">داغ</span></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="index-corporate.html">شرکتی
+                                                                - نسخه 1</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-2.html">شرکتی
+                                                                - نسخه 2</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-3.html">شرکتی
+                                                                - نسخه 3</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-4.html">شرکتی
+                                                                - نسخه 4</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-5.html">شرکتی
+                                                                - نسخه 5</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-6.html">شرکتی
+                                                                - نسخه 6</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-7.html">شرکتی
+                                                                - نسخه 7</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-8.html">شرکتی
+                                                                - نسخه 8</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-9.html">شرکتی
+                                                                - نسخه 9</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-10.html">شرکتی
+                                                                - نسخه 10</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-11.html">شرکتی
+                                                                - نسخه 11</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-12.html">شرکتی
+                                                                - نسخه 12</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-13.html">شرکتی
+                                                                - نسخه 13</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-14.html">شرکتی
+                                                                - نسخه 14</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-15.html">شرکتی
+                                                                - نسخه 15</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-16.html">شرکتی
+                                                                - نسخه 16</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-17.html">شرکتی
+                                                                - نسخه 17</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-18.html">شرکتی
+                                                                - نسخه 18</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-19.html">شرکتی
+                                                                - نسخه 19</a></li>
+                                                            <li><a class="dropdown-item" href="index-corporate-20.html">شرکتی
+                                                                - نسخه 20</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a class="dropdown-item" href="#">نمونه‌کارها</a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="index-portfolio.html">نمونه‌کارها
+                                                                - نسخه 1</a></li>
+                                                            <li><a class="dropdown-item" href="index-portfolio-2.html">نمونه‌کارها
+                                                                - نسخه 2</a></li>
+                                                            <li><a class="dropdown-item" href="index-portfolio-3.html">نمونه‌کارها
+                                                                - نسخه 3</a></li>
+                                                            <li><a class="dropdown-item" href="index-portfolio-4.html">نمونه‌کارها
+                                                                - نسخه 4</a></li>
+                                                            <li><a class="dropdown-item" href="index-portfolio-5.html">نمونه‌کارها
+                                                                - نسخه 5</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a class="dropdown-item" href="#">بلاگ</a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="index-blog.html">بلاگ -
+                                                                نسخه 1</a></li>
+                                                            <li><a class="dropdown-item" href="index-blog-2.html">بلاگ -
+                                                                نسخه 2</a></li>
+                                                            <li><a class="dropdown-item" href="index-blog-3.html">بلاگ -
+                                                                نسخه 3</a></li>
+                                                            <li><a class="dropdown-item" href="index-blog-4.html">بلاگ -
+                                                                نسخه 4</a></li>
+                                                            <li><a class="dropdown-item" href="index-blog-5.html">بلاگ -
+                                                                نسخه 5</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a class="dropdown-item" href="#">تک صفحه</a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="index-one-page.html">تک
+                                                                صفحه اصلی</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <button class="btn header-btn-collapse-nav" data-toggle="collapse"
+                                        data-target=".header-nav-main nav">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                            </div>
+                            <div class="header-nav-features header-nav-features-light header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
+                                <div class="header-nav-feature header-nav-features-search d-inline-flex">
+                                    <a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i
+                                            class="fas fa-search header-nav-top-icon"></i></a>
+                                    <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed"
+                                         id="headerTopSearchDropdown">
+                                        <form role="search" action="page-search-results.html" method="get">
+                                            <div class="simple-search input-group">
+                                                <input class="form-control text-1" id="headerSearch" name="q"
+                                                       type="search" value="" placeholder="جستجو ...">
+                                                <span class="input-group-append">
+															<button class="btn" type="submit">
+																<i class="fa fa-search header-nav-top-icon text-color-dark"></i>
+															</button>
+														</span>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -194,91 +241,103 @@
         </div>
     </header>
 
-    <div role="main" class="main">
-        <section class="section section-scroll section-background border-0 m-0" data-section-scroll-title="PORTO BOX"
-                 data-section-scroll-header-color="light"
-                 style="background-image: url({% static 'img/slide-medical-2.jpg' %}); background-size: cover; background-position: center;">
-            <div class="box-content">
-                <br/>
-                <br/>
-                <div class="overflow-hidden mb-1">
-                    <h2 class="font-weight-normal text-7 mb-0"><strong
-                            class="font-weight-extra-bold mx-5">جستجو در بین کدهای کتاب ICD10</strong></h2>
-                </div>
-            </div>
-            {#            <div class="row">#}
-            {#                <div class="col-lg-6 col-md-12">#}
-            {#                    <form>#}
-            {#                        <div class="autocomplete">#}
-            {#                            <h5>نام دستگاه</h5>#}
-            {#                            <input id="myInput" type="text" name="myCountry" placeholder="نام دستگاه"#}
-            {#                                   style="width: 300px">#}
-            {#                        </div>#}
-            {#                    </form>#}
-            {#                    <form>#}
-            {#                        <div class="autocomplete">#}
-            {#                            <h5>سر فصل خدمتی</h5>#}
-            {#                            <input id="myInput2" type="text" name="myCountry2" placeholder="سر فصل خدمتی">#}
-            {#                        </div>#}
-            {#                    </form>#}
-            {#                </div>#}
-            {#            </div>#}
-            {#            <form>#}
-            {#                <div class="autocomplete">#}
-            {#                    <h5>گروه خدمتی</h5>#}
-            {#                    <input id="myInput3" type="text" name="myCountry3" placeholder="گروه خدمتی">#}
-            {#                </div>#}
-            {##}
-            {#            </form>#}
 
-            <form>
-                <div class="autocomplete">
-                    <h5>شرح کد</h5>
-                    <input id="myInput4" type="text" name="myCountry4" placeholder="شرح کد">
+    <div role="main" class="main bg-color-grey-scale-7 jj-background">
+        <div class="container">
 
-                </div>
-            </form>
-            <table id="explanations" class="text-color-dark"></table>
+            <div class="row mt-5 mb-4">
 
-
-            <div>
-                <h5>توضیحات</h5>
-                <table id="descriptions" class="text-color-dark"></table>
-
-
-                {#                <p id="myInput5" type="text" name="myCountry5" placeholder="توضیحات"></p>#}
-            </div>
-
-
-            <h5>کد ملی</h5>
-            <p id="demo"></p>
-
-
-            <div class="container-fluid h-100">
-                <div class="row align-items-end h-100">
-                    <div class="col-9 col-md-5 col-lg-3 overlay overlay-show overlay-op-9 overlay-backward py-2 appear-animation"
-                         data-appear-animation="fadeInRightShorter">
-                        <div class="position-relative z-index-2 py-4">
-                            <h2 class="text-color-light font-weight-bold text-5 mb-2 appear-animation primary-font"
-                                data-appear-animation="fadeInRightShorter" data-appear-animation-delay="300">آخرین
-                                ورژن
-                                ICD10</h2>
-                            <a href="#"
-                               class="d-inline-flex align-items-center btn btn-with-arrow font-weight-bold text-color-light text-2 p-0 appear-animation"
-                               data-appear-animation="fadeInRightShorter" data-appear-animation-delay="700">
-                                مشاهده بیشتر
-                                <span class="d-inline-flex align-items-center bg-transparent box-shadow-none ml-2"><i
-                                        class="fas fa-arrow-left text-color-light text-3 top-0"></i></span>
-                            </a>
+                <div class="col">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <form action="/" id="frmShippingAddress" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label class="font-weight-bold text-dark text-2">نام</label>
+                                <input type="text" value="" class="form-control">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="font-weight-bold text-dark text-2">نام خانوادگی</label>
+                                <input type="text" value="" class="form-control">
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label class="font-weight-bold text-dark text-2">شرح عمل</label>
+                                <input type="text" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label class="font-weight-bold text-dark text-2">کد ملی بیمار</label>
+                                <input type="text" value="" class="form-control">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label class="font-weight-bold text-dark text-2">نام پزشک</label>
+                                <input type="text" value="" class="form-control">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label class="font-weight-bold text-dark text-2">تاریخ عمل</label>
+                                <input type="text" value="" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <h2 class="font-weight-semi-bold mb-3">جستجو در بین کدهای ICD10</h2>
+                        <form>
+                            <div class="autocomplete">
+                                <h5>شرح کد</h5>
+                                <input id="myInput4" value="سوزنی" type="text" name="myCountry4" placeholder="شرح کد"
+                                       class="col-lg-12">
+
+                            </div>
+                        </form>
+                        <div style="height:200px; overflow: scroll; opacity: 0.7" class="bg-light">
+                            <table id="explanations" class="text-color-dark ">
+
+                            </table>
+                        </div>
+                        <h5>توضیحات</h5>
+                        <div style="height: 200px;overflow: scroll; opacity: 0.7" class="bg-light">
+
+                            <table id="descriptions" class="text-color-dark"></table>
+                            {#                <p id="myInput5" type="text" name="myCountry5" placeholder="توضیحات"></p>#}
+                        </div>
+                        {#            <h5>کد ملی</h5>#}
+                        {#            <p id="demo"></p>#}
+
+                        <div class="form-row">
+                            <label class="font-weight-bold text-dark text-2">کد ملی عمل</label>
+
+                            <div id="asghar" class="form-group col-lg-4">
+                                {#                                <input id="code" type="text" value="" class="form-control" multiple>#}
+                            </div>
+                            <div class="form-group col-lg-1">
+                                <label class="font-weight-bold text-dark text-2">اضافه کردن کد</label>
+                                <input id="akbar" type="submit" value="submit"
+                                       class="btn  btn-light text-2 text-uppercase float-right mb-2"
+                                       data-loading-text="در حال بارگذاری ...">
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <input type="submit" value="ادامه"
+                                       class="btn btn-xl btn-light pr-4 pl-4 text-2 font-weight-semibold text-uppercase float-right mb-2"
+                                       data-loading-text="در حال بارگذاری ...">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-        </section>
-
+        </div>
     </div>
 </div>
+
 
 <!-- Vendor -->
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
@@ -297,7 +356,6 @@
 <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
 <script src="{% static 'vendor/vide/jquery.vide.min.js' %}"></script>
 <script src="{% static 'vendor/vivus/vivus.min.js' %}"></script>
-<script src="{% static 'vendor/nanoscroller/jquery.nanoscroller.min.js' %}"></script>
 
 <!-- Theme Base, Components and Settings -->
 <script src="{% static 'js/theme.js' %}"></script>
@@ -305,7 +363,8 @@
 <!-- Current Page Vendor and Views -->
 <script src="{% static 'vendor/rs-plugin/js/jquery.themepunch.tools.min.js' %}"></script>
 <script src="{% static 'vendor/rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
-
+<script src="{% static 'js/views/view.contact.js' %}}"></script>
+<script src="{% static 'js/demos/demo-medical.js' %}}"></script>
 <!-- Theme Custom -->
 <script src="{% static 'js/custom.js' %}"></script>
 
@@ -315,7 +374,10 @@
 
 <!--{#<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>#}-->
 <!--{#<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>#}-->
-
+<script>
+    var offset = $('#explanations ul li').first().position().top;
+    $('#explanations').scrollTop($('#23532532532532').parent().position().top - offset);
+</script>
 
 <script>
 
@@ -336,18 +398,18 @@
         $(id).html(eTable);
     }
 
-    function createTableByForLoop(data) {
-        var eTable = "<table><thead><tr><th colspan='3'>لیست موارد مشابه</th></tr><tr><th>col1</th><th>col2</th><th>col3</th</tr></thead><tbody>"
-        for (var i = 0; i < data.length; i += 3) {
-            eTable += "<tr>";
-            eTable += "<td>" + data[i] + "</td>";
-            {#eTable += "<td>" + data[i + 1] + "</td>";#}
-            {#eTable += "<td>" + data[i + 2] + "</td>";#}
-            eTable += "</tr>";
-        }
-        eTable += "</tbody></table>";
-        $('#explanations').html(eTable);
-    }
+    {#function createTableByForLoop(data) {#}
+    {#    var eTable = "<table><thead><tr><th colspan='3'>لیست موارد مشابه</th></tr><tr><th>col1</th><th>col2</th><th>col3</th</tr></thead><tbody>"#}
+    {#    for (var i = 0; i < data.length; i += 3) {#}
+    {#        eTable += "<tr>";#}
+    {#        eTable += "<td>" + data[i] + "</td>";#}
+    {#eTable += "<td>" + data[i + 1] + "</td>";#}
+    {#eTable += "<td>" + data[i + 2] + "</td>";#}
+    {#        eTable += "</tr>";#}
+    {#    }#}
+    {#    eTable += "</tbody></table>";#}
+    {#    $('#explanations').html(eTable);#}
+    {# }#}
 
 
     $(document).ready(function () {
@@ -412,7 +474,7 @@
 </script>
 
 <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
 
         // code to read selected table row cell data (values).
         $("#descriptions").on('click', '.btnSelect', function () {
@@ -435,8 +497,11 @@
             })
                 .done(function (response) {
                     var code = response.code;
-                    alert(code);
-
+                    {#var asghar = $('#code').val();#}
+                    {#$('#code').val(asghar + " " + code);#}
+                    {#$('#asghar').change(function () {#}
+                    $('#asghar').append('<input name="asgharian" class="asgharian" type="checkbox" /> ' + code + '<br />');
+                    {#document.getElementById('code').value = response.code;#}
                     {#createTableByJqueryEach(descriptions, "#descriptions");#}
 
                 });
@@ -445,371 +510,39 @@
 
 </script>
 
-{#<script>#}
-{##}
-{#    $(document).ready(function () {#}
-{##}
-{#        // code to read selected table row cell data (values).#}
-{#        $("#descriptions").on('click', '.btnSelect', function () {#}
-{#            // get the current row#}
-{#            var currentRow = $(this).closest("tr");#}
-{##}
-{#            var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value#}
-{#            var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD#}
-{#            var col3 = currentRow.find("td:eq(2)").text(); // get current row 3rd TD#}
-{#            var description = col1 + "\n" + col2 + "\n" + col3;#}
-{##}
-{#            alert(description);#}
-{#            $.ajax({#}
-{#                url: '/col12/',#}
-{#                data: {#}
-{#                    description: description,#}
-{#                },#}
-{#                method: 'get',#}
-{##}
-{#            })#}
-{#                .done(function (response) {#}
-{#                    var code = response.code;#}
-{#                    alert(code);#}
-{##}
-{#                });#}
-{#        });#}
-{#    });#}
-{#</script>#}
-{#Description#}
 
-
-{##}
-{#<script>#}
-{#    function autocomplete(inp, arr) {#}
-{#        /*the autocomplete function takes two arguments,#}
-{#        the text field element and an array of possible autocompleted values:*/#}
-{#        var currentFocus;#}
-{#        /*execute a function when someone writes in the text field:*/#}
-{#        inp.addEventListener("input", function (e) {#}
-{#            var a, b, i, val = this.value;#}
-{#            /*close any already open lists of autocompleted values*/#}
-{#            closeAllLists();#}
-{#            if (!val) {#}
-{#                return false;#}
-{#            }#}
-{#            currentFocus = -1;#}
-{#            /*create a DIV element that will contain the items (values):*/#}
-{#            a = document.createElement("DIV");#}
-{#            a.setAttribute("id", this.id + "autocomplete-list");#}
-{#            a.setAttribute("class", "autocomplete-items");#}
-{#            /*append the DIV element as a child of the autocomplete container:*/#}
-{#            this.parentNode.appendChild(a);#}
-{#            /*for each item in the array...*/#}
-{#            for (i = 0; i < arr.length; i++) {#}
-{#                /*check if the item starts with the same letters as the text field value:*/#}
-{#                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {#}
-{#                    /*create a DIV element for each matching element:*/#}
-{#                    b = document.createElement("DIV");#}
-{#                    /*make the matching letters bold:*/#}
-{#                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";#}
-{#                    b.innerHTML += arr[i].substr(val.length);#}
-{#                    /*insert a input field that will hold the current array item's value:*/#}
-{#                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";#}
-{#                    /*execute a function when someone clicks on the item value (DIV element):*/#}
-{#                    b.addEventListener("click", function (e) {#}
-{#                        /*insert the value for the autocomplete text field:*/#}
-{#                        inp.value = this.getElementsByTagName("input")[0].value;#}
-{#                        /*close the list of autocompleted values,#}
-{#                        (or any other open lists of autocompleted values:*/#}
-{#                        closeAllLists();#}
-{#                    });#}
-{#                    a.appendChild(b);#}
-{#                }#}
-{#            }#}
-{#        });#}
-{#        /*execute a function presses a key on the keyboard:*/#}
-{#        inp.addEventListener("keydown", function (e) {#}
-{#            var x = document.getElementById(this.id + "autocomplete-list");#}
-{#            if (x) x = x.getElementsByTagName("div");#}
-{#            if (e.keyCode == 40) {#}
-{#                /*If the arrow DOWN key is pressed,#}
-{#                increase the currentFocus variable:*/#}
-{#                currentFocus++;#}
-{#                /*and and make the current item more visible:*/#}
-{#                addActive(x);#}
-{#            } else if (e.keyCode == 38) { //up#}
-{#                /*If the arrow UP key is pressed,#}
-{#                decrease the currentFocus variable:*/#}
-{#                currentFocus--;#}
-{#                /*and and make the current item more visible:*/#}
-{#                addActive(x);#}
-{#            } else if (e.keyCode == 13) {#}
-{#                /*If the ENTER key is pressed, prevent the form from being submitted,*/#}
-{#                e.preventDefault();#}
-{#                if (currentFocus > -1) {#}
-{#                    /*and simulate a click on the "active" item:*/#}
-{#                    if (x) x[currentFocus].click();#}
-{#                }#}
-{#            }#}
-{#        });#}
-{##}
-{#        function addActive(x) {#}
-{#            /*a function to classify an item as "active":*/#}
-{#            if (!x) return false;#}
-{#            /*start by removing the "active" class on all items:*/#}
-{#            removeActive(x);#}
-{#            if (currentFocus >= x.length) currentFocus = 0;#}
-{#            if (currentFocus < 0) currentFocus = (x.length - 1);#}
-{#            /*add class "autocomplete-active":*/#}
-{#            x[currentFocus].classList.add("autocomplete-active");#}
-{#        }#}
-{##}
-{#        function removeActive(x) {#}
-{#            /*a function to remove the "active" class from all autocomplete items:*/#}
-{#            for (var i = 0; i < x.length; i++) {#}
-{#                x[i].classList.remove("autocomplete-active");#}
-{#            }#}
-{#        }#}
-{##}
-{#        function closeAllLists(elmnt) {#}
-{#            /*close all autocomplete lists in the document,#}
-{#            except the one passed as an argument:*/#}
-{#            var x = document.getElementsByClassName("autocomplete-items");#}
-{#            for (var i = 0; i < x.length; i++) {#}
-{#                if (elmnt != x[i] && elmnt != inp) {#}
-{#                    x[i].parentNode.removeChild(x[i]);#}
-{#                }#}
-{#            }#}
-{#        }#}
-{##}
-{#        /*execute a function when someone clicks in the document:*/#}
-{#        document.addEventListener("click", function (e) {#}
-{#            closeAllLists(e.target);#}
-{#        });#}
-{#    }#}
-{#</script>#}
-{##}
-{#<script>#}
-{#    var countries = {{ db_col_1 | safe }};#}
-{##}
-{#    autocomplete(document.getElementById("myInput"), countries);#}
-{#</script>#}
-{##}
-{#<script>#}
-{##}
-{#    $(document).ready(function () {#}
-{#        $('.autocomplete').bind("click change", function () {#}
-{#            var query_text = document.getElementById("myInput");#}
-{##}
-{#            var ajax_config = {#}
-{#                url: '/col2/',#}
-{#                data: {#}
-{#                    jj: query_text.value#}
-{#                },#}
-{#                method: 'get',#}
-{##}
-{##}
-{#                success: function (response) {#}
-{##}
-{#                    var countries2 = $(response.results);#}
-{##}
-{#                    if (countries2) {#}
-{#                        autocomplete(document.getElementById("myInput2"), countries2);#}
-{#                    } else {#}
-{#                        $("#myInput2").html("")#}
-{#                    }#}
-{#                    ;#}
-{##}
-{#                }#}
-{##}
-{##}
-{#            };#}
-{##}
-{#            $.ajax(ajax_config)#}
-{##}
-{#        });#}
-{#    });#}
-{#</script>#}
-{##}
-{#<script>#}
-{##}
-{#console.log(col_1.value)#}
-{#    $(document).ready(function () {#}
-{#        $('.autocomplete').bind("click change", function () {#}
-{#            $('.autocomplete').bind("click change", function () {#}
-{#                var query_text = document.getElementById("myInput");#}
-{#                var query_text2 = document.getElementById("myInput2");#}
-{##}
-{#                var ajax_config = {#}
-{#                    url: '/col3/',#}
-{#                    data: {#}
-{#                        jj: query_text.value,#}
-{#                        jj2: query_text2.value,#}
-{#                    },#}
-{#                    method: 'get',#}
-{##}
-{##}
-{#                    success: function (response) {#}
-{##}
-{#                        var countries3 = $(response.results2);#}
-{##}
-{#                        autocomplete(document.getElementById("myInput3"), countries3);#}
-{#                    }#}
-{##}
-{##}
-{#                };#}
-{#                $.ajax(ajax_config);#}
-{#            });#}
-{#        });#}
-{#    });#}
-{#</script>#}
-{##}
-{#<script>#}
-{##}
-{#    $(document).ready(function () {#}
-{#        $('.autocomplete').bind("click change", function () {#}
-{#            $('.autocomplete').bind("click change", function () {#}
-{#                $('.autocomplete').bind("click change", function () {#}
-{#                    var query_text = document.getElementById("myInput");#}
-{#                    var query_text2 = document.getElementById("myInput2");#}
-{#                    var query_text3 = document.getElementById("myInput3");#}
-{##}
-{#                    var ajax_config = {#}
-{#                        url: '/col4/',#}
-{#                        data: {#}
-{#                            jj: query_text.value,#}
-{#                            jj2: query_text2.value,#}
-{#                            jj3: query_text3.value,#}
-{#                        },#}
-{#                        method: 'get',#}
-{##}
-{##}
-{#                        success: function (response) {#}
-{##}
-{#                            var countries4 = $(response.results3);#}
-{##}
-{#                            autocomplete(document.getElementById("myInput4"), countries4);#}
-{#                        }#}
-{##}
-{##}
-{#                    };#}
-{#                    $.ajax(ajax_config);#}
-{#                });#}
-{#            });#}
-{#        });#}
-{#    });#}
-{#</script>#}
-{##}
-{##}
-{#<script>#}
-{#    $(document).ready(function () {#}
-{#        $('.autocomplete').bind("change click", function () {#}
-{#            var query_text4 = document.getElementById("myInput4");#}
-{##}
-{#            $.ajax({#}
-{#                url: '/col5/',#}
-{#                data: {#}
-{#                    jj4: query_text4.value,#}
-{#                },#}
-{#                method: 'get',#}
-{##}
-{#cache: false#}
-{#            })#}
-{#                .done(function (response) {#}
-{#                    autocomplete(document.getElementById("myInput5"), response.list_of_description);#}
-{##}
-{#$("#demo").html(response.res);#}
-{#                });#}
-{#        });#}
-{#    });#}
-{#</script>#}
-{##}
-{##}
-{#<script>#}
-{#    $(document).ready(function () {#}
-{#        $('.autocomplete').bind("change click", function () {#}
-{#            var query_text4 = document.getElementById("myInput4");#}
-{##}
-{#            $.ajax({#}
-{#                url: '/col5/',#}
-{#                data: {#}
-{#                    jj4: query_text4.value,#}
-{#                },#}
-{#                method: 'get',#}
-{##}
-{#cache: false#}
-{#            })#}
-{#                .done(function (response) {#}
-{#                    var query_text4 = document.getElementById("myInput5");#}
-{##}
-{#                    $("#demo").html(response.reverse_akbar[query_text4]);#}
-{#                });#}
-{#        });#}
-{#    });#}
-{#</script>#}
-
-
-{#<script>#}
-{#    $(document).ready(function () {#}
-{#        $('#demo').bind("change click", function () {#}
-{#            var query_text4 = document.getElementById("demo");#}
-{##}
-{#            $.ajax({#}
-{#                url: '/col6/',#}
-{#                data: {#}
-{#                    jj4: query_text4.value,#}
-{#                },#}
-{#                method: 'get',#}
-{##}
-{#cache: false#}
-{#            })#}
-{#                .done(function (response) {#}
-{#                    var countries4 = $(response.res);#}
-{##}
-{#                    if (countries4) {#}
-{#                        var reg1 = \d{6} تا \d{6};#}
-{#                        var reg2 = \d{6} -\d{6};#}
-{#                        var reg3 = \d{6};#}
-{##}
-{#                        var Array1 = countries4.match(reg1);#}
-{#                        var Array2 = countries4.match(reg2);#}
-{#                        var Array3 = countries4.match(reg3);#}
-{##}
-{########################################################}
-{##}
-{##}
-{#                        $.ajax({#}
-{#                            url: '/col7/',#}
-{#                            data: {#}
-{#                                jj5: Array1,#}
-{#                                jj6: Array2,#}
-{#                                jj7: Array3,#}
-{#                            },#}
-{#                            method: 'get',#}
-{##}
-{#                        })#}
-{#                            .done(function (response) {#}
-{#                                $("#myInput5").html(response.res);#}
-{#                            });#}
-{##}
-{##}
-{########################################################}
-{##}
-{#                    };#}
-{##}
-{#                });#}
-{#        });#}
-{#    });#}
-{#</script>#}
-
-
-<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    $(document).ready(function () {
 
-    ga('create', 'UA-12345678-1', 'auto');
-    ga('send', 'pageview');
+        // code to read selected table row cell data (values).
+        $("#akbar").on('click', function () {
+            // get the current row
+            {#alert("asghar")#}
+            {#if ($('input').is(":checked")) {#}
+            // it is checked
+            $('input:checkbox[name=asgharian]').each(function () {
+                if ($(this).is(':checked'))
+                    alert($(this).val());
+            });
+            {#alert(data)#}
+            {#alert(data[0][0])#}
+
+            {#$.ajax({#}
+            {#    url: '/col13/',#}
+            {#    data: {#}
+            {#        data: data,#}
+            {#    },#}
+            {#    method: 'get',#}
+            {##}
+            {# }) #}
+            {#    .done(function (response) {#}
+            {#        alert(data)#}
+            {#    });#}
+        });
+    });
+
 </script>
- -->
+
 
 </body>
 </html>
