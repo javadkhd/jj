@@ -1,5 +1,6 @@
 import re
-
+from urllib import parse
+from pprint import pprint
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import connection
@@ -100,7 +101,7 @@ def col_11(request):
             for i in range(reg4[0], reg4[0] + 10):
                 akbar.add(i)
 
-    print(akbar)
+    # print(akbar)
 
     descriptions = list()
     for i in akbar:
@@ -137,26 +138,102 @@ def col_12(request):
     )
 
 
-# def col_12(request):
-#     description = request.GET.get('description', None)
-#     description = description.split()
-#     description.remove('Select')
-#     description = " ".join(description)
-#     # print(description)
-#     con = sqlite3.connect('db.sqlite3')
-#     cursorObj = con.cursor()
-#
-#     query_text = f'SELECT توضیحات FROM Sheet۱ WHERE "شرح کد(Value)" LIKE "%{description}%"'
-#
-#
-#     cursorObj.execute(query_text)
-#     descriptions = cursorObj.fetchall()
-#
-#     return JsonResponse(
-#         {
-#             'descriptions': descriptions,
-#         }
-#     )
+def col_13(request):
+    data = request.GET.get('arr', None)
+    data = list(set(re.findall(r"(\d{6})", data)))
+
+    con = sqlite3.connect('db.sqlite3')
+    cursorObj = con.cursor()
+
+    my_dict = dict()
+
+    for elem in data:
+
+        my_dict[elem] = dict()
+
+        query_text = f'SELECT توضیحات FROM Sheet۱ WHERE "کدملی(Code)" LIKE "%{elem}%"'
+        cursorObj.execute(query_text)
+        des = cursorObj.fetchall()
+        my_dict[elem]['des'] = des[0][0]
+
+        query_text = f'SELECT "شرح کد(Value)" FROM Sheet۱ WHERE "کدملی(Code)" LIKE "%{elem}%"'
+        cursorObj.execute(query_text)
+        expl = cursorObj.fetchall()
+        my_dict[elem]['expl'] = expl[0][0]
+
+    # pprint(my_dict)
+    del data
+
+    my_list = list()
+    for k, v in my_dict.items():
+
+        expl = v['expl']
+        des = v['des']
+
+        if des==None:
+            des = ""
+
+        if ("(عمل مستقل)" in expl) or ("کد ديگري" in des):
+            if len(my_dict.keys()) > 1:
+                report = f"کد {k} همراه با کد دیگری قابل قبول نیست."
+
+                my_list.append(report)
+
+        if "به جز کد" in des:
+            pattern3 = r"\(به جز کد (\d{6})\)"
+            num = re.findall(pattern3, des)
+            if num not in my_dict.keys():
+                report = f"کد {k} همراه با کد انتخابی قابل قبول نیست."
+                my_list.append(report)
+
+
+
+
+
+
+        if des:
+
+            ###########################
+            pattern1 = r"(\(این کد.*\d{6}.*نمی‌باشد\))"
+            # print(des)
+            new_des = re.findall(pattern1, des)
+            # print(new_des)
+            if new_des:
+                new_des = new_des[0]
+            else:
+                new_des = ""
+
+            nums = re.findall(r"(\d{6})", new_des)
+
+            if any(i in my_dict.keys() for i in nums):
+                report = f"کد {k} با کد یا کدهای {nums} تداخل دارد."
+
+                my_list.append(report)
+
+            ###########################
+            pattern2 = r"گزارش نگردد"
+            if re.findall(pattern2, des):
+
+                nums = re.findall(r"(\d{6})", new_des)
+
+                if any(i in my_dict.keys() for i in nums):
+                    report = f"کد {k} با کد یا کدهای {nums} تداخل دارد."
+
+                    my_list.append(report)
+
+            ###########################
+
+    del my_dict
+
+    if not my_list:
+        my_list.append("asghar")
+
+    return JsonResponse(
+        {
+            'arr': my_list,
+        }
+    )
+
 
 
 def nozad(request):

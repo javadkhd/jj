@@ -19,22 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from icd10.views import nozad, col_10, col_11, col_12
+from icd10.views import nozad
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', nozad), #, name='nozad'
-    path('col10/', col_10), #, name='nozad'
-    path('col11/', col_11), #, name='nozad'
-    path('col12/', col_12), #, name='nozad'
-    # path('icd10/', include('icd10.urls'))
-
-
-    # path(r'^ajax_calls/search/', autocomplete),
-
-    # path('blog/', include('blog.urls')),
-    # path('users/', include('users.urls')),
-    # path('', show_all_posts, name='home'),
+    path('', nozad, name='nozad'),
+    path('icd10/', include('icd10.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
