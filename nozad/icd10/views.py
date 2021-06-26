@@ -219,7 +219,7 @@ def col_13(request):
     del my_dict
 
     if not my_list:
-        my_list.append("200")
+        my_list = 200
 
     return JsonResponse(
         {

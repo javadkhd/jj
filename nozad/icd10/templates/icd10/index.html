@@ -499,6 +499,50 @@
 
 
 <script>
+    function loadScript() {
+        // get the current row
+        var first_name = $("#first_name").val()
+        var last_name = $("#last_name").val()
+        var national_code = $("#national_code").val()
+        var doctor_name = $("#doctor_name").val()
+
+        var arr = [];
+        $('input.asgharian:checkbox:checked').each(function () {
+            arr.push($(this).val());
+        });
+
+        var codes = JSON.stringify(arr);
+
+
+        $.ajax({
+            url: '/icd10/col14/',
+            data: {
+                first_name: first_name,
+                last_name: last_name,
+                national_code: national_code,
+                doctor_name: doctor_name,
+                codes: codes,
+            },
+            method: 'get',
+
+        })
+            .done(function (response) {
+                if (response.status_code === 400) {
+                    alert("not complete information")
+                } else if (response.status_code === 200) {
+                    location.reload();
+                } else {
+                    alert("10006016")
+                }
+
+            });
+    }
+
+
+</script>
+
+
+<script>
     $(document).ready(function () {
 
         // code to read selected table row cell data (values).
@@ -521,59 +565,66 @@
 
             })
                 .done(function (response) {
-                    alert(response.arr)
-                });
-        });
-    });
-
-</script>
-
-<script>
-    $(document).ready(function () {
-
-        // code to read selected table row cell data (values).
-        $("#edameh").on('click', function () {
-            // get the current row
-            var first_name = $("#first_name").val()
-            {#alert(first_name)#}
-            var last_name = $("#last_name").val()
-            var national_code = $("#national_code").val()
-            var doctor_name = $("#doctor_name").val()
-
-            var arr = [];
-            $('input.asgharian:checkbox:checked').each(function () {
-                arr.push($(this).val());
-            });
-
-            var codes = JSON.stringify(arr);
-
-
-            $.ajax({
-                url: '/icd10/col14/',
-                data: {
-                    first_name: first_name,
-                    last_name: last_name,
-                    national_code: national_code,
-                    doctor_name: doctor_name,
-                    codes: codes,
-                },
-                method: 'get',
-
-            })
-                .done(function (response) {
-                    if (response.status_code === 400) {
-                        alert("not complete information")
-                    } else if (response.status_code === 200) {
-                        location.reload();
+                    if (response.status_code === 200) {
+                        loadScript()
                     } else {
-                        alert("10006016")
+                        alert(response.status_code)
                     }
-
                 });
         });
-    });
+    })
+    ;
 
 </script>
+
+{#<script>#}
+{#    $(document).ready(function () {#}
+{##}
+{#        // code to read selected table row cell data (values).#}
+{#        $("#edameh").on('click', function () {#}
+{#            // get the current row#}
+{#            var first_name = $("#first_name").val()#}
+{#alert(first_name)#}
+{#            var last_name = $("#last_name").val()#}
+{#            var national_code = $("#national_code").val()#}
+{#            var doctor_name = $("#doctor_name").val()#}
+{##}
+{#            var arr = [];#}
+{#            $('input.asgharian:checkbox:checked').each(function () {#}
+{#                arr.push($(this).val());#}
+{#            });#}
+{##}
+{#            var codes = JSON.stringify(arr);#}
+{##}
+{##}
+{#            $.ajax({#}
+{#                url: '/icd10/col14/',#}
+{#                data: {#}
+{#                    first_name: first_name,#}
+{#                    last_name: last_name,#}
+{#                    national_code: national_code,#}
+{#                    doctor_name: doctor_name,#}
+{#                    codes: codes,#}
+{#                },#}
+{#                method: 'get',#}
+{##}
+{#            })#}
+{#                .done(function (response) {#}
+{#                    if (response.status_code === 400) {#}
+{#                        alert("not complete information")#}
+{#                    } else if (response.status_code === 200) {#}
+{#                        location.reload();#}
+{#                    } else {#}
+{#                        alert("10006016")#}
+{#                    }#}
+{##}
+{#                });#}
+{#        });#}
+{#    });#}
+{##}
+{#</script>#}
+
+
 
 
 </body>
