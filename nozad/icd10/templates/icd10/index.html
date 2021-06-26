@@ -252,49 +252,42 @@
                     <br/>
                     <br/>
                     <br/>
-                    <form action="/" id="frmShippingAddress" method="post">
+                    <form>
                         <div class="form-row">
                             <div class="form-group col-lg-6">
                                 <label class="font-weight-bold text-dark text-2">نام</label>
-                                <input type="text" value="" class="form-control">
+                                <input id="first_name" type="text" value="" class="form-control">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label class="font-weight-bold text-dark text-2">نام خانوادگی</label>
-                                <input type="text" value="" class="form-control">
+                                <input id="last_name" type="text" value="" class="form-control">
                             </div>
                         </div>
+
                         <div class="form-row">
-                            <div class="form-group col">
-                                <label class="font-weight-bold text-dark text-2">شرح عمل</label>
-                                <input type="text" value="" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-6">
                                 <label class="font-weight-bold text-dark text-2">کد ملی بیمار</label>
-                                <input type="text" value="" class="form-control">
+                                <input id="national_code" type="text" value="" class="form-control">
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-6">
                                 <label class="font-weight-bold text-dark text-2">نام پزشک</label>
-                                <input type="text" value="" class="form-control">
+                                <input id="doctor_name" type="text" value="" class="form-control">
                             </div>
-                            <div class="form-group col-lg-4">
-                                <label class="font-weight-bold text-dark text-2">تاریخ عمل</label>
-                                <input type="text" value="" class="form-control">
-                            </div>
+
                         </div>
 
 
                         <h2 class="font-weight-semi-bold mb-3">جستجو در بین کدهای ICD10</h2>
                         <form>
                             <div class="autocomplete">
-                                <h5>شرح کد</h5>
-                                <input id="myInput4" value="سوزنی" type="text" name="myCountry4" placeholder="شرح کد"
+                                <h5>شرح عمل</h5>
+                                <input id="myInput4" value="" type="text" name="myCountry4" placeholder="شرح عمل"
                                        class="col-lg-12">
 
                             </div>
                         </form>
-                        <div style="height:200px; overflow: scroll; opacity: 0.7" class="bg-light">
+
+                        <div style="height:200px; overflow: scroll; opacity: 0.7" class="mt-2 bg-light">
                             <table id="explanations" class="text-color-dark ">
 
                             </table>
@@ -326,7 +319,7 @@
 
                         <div class="form-row">
                             <div class="form-group col">
-                                <input type="submit" value="ادامه"
+                                <input id="edameh" type="submit" value="ادامه"
                                        class="btn btn-xl btn-light pr-4 pl-4 text-2 font-weight-semibold text-uppercase float-right mb-2"
                                        data-loading-text="در حال بارگذاری ...">
                             </div>
@@ -492,7 +485,11 @@
 
                     var code = response.code;
 
-                    $('#asghar').append('<input name="asgharian" class="asgharian" type="checkbox" value=' + code + ' /> ' + code + '<br />');
+                    var codes = $('#asghar').text();
+
+                    if (!(codes.match(code))) {
+                        $('#asghar').append('<input name="asgharian" class="asgharian" type="checkbox" value=' + code + ' /> ' + code + '<br />');
+                    }
 
                 });
         });
@@ -507,20 +504,12 @@
         // code to read selected table row cell data (values).
         $("#akbar").on('click', function () {
 
-            {#var checkedVals = $('.asgharian:checkbox:checked').map(function () {#}
-            {#    return this.value;#}
-            {# }).get();#}
-            {#alert(checkedVals.join(","));#}
-            {#if ($('#akbar').is(":checked")) {#}
             var arr = [];
             $('input.asgharian:checkbox:checked').each(function () {
                 arr.push($(this).val());
             });
-            {#alert(arr)#}
-            {# } #}
 
             var jj = JSON.stringify(arr);
-            {#alert(typeof jj)#}
 
 
             $.ajax({
@@ -533,6 +522,53 @@
             })
                 .done(function (response) {
                     alert(response.arr)
+                });
+        });
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        // code to read selected table row cell data (values).
+        $("#edameh").on('click', function () {
+            // get the current row
+            var first_name = $("#first_name").val()
+            {#alert(first_name)#}
+            var last_name = $("#last_name").val()
+            var national_code = $("#national_code").val()
+            var doctor_name = $("#doctor_name").val()
+
+            var arr = [];
+            $('input.asgharian:checkbox:checked').each(function () {
+                arr.push($(this).val());
+            });
+
+            var codes = JSON.stringify(arr);
+
+
+            $.ajax({
+                url: '/icd10/col14/',
+                data: {
+                    first_name: first_name,
+                    last_name: last_name,
+                    national_code: national_code,
+                    doctor_name: doctor_name,
+                    codes: codes,
+                },
+                method: 'get',
+
+            })
+                .done(function (response) {
+                    if (response.status_code === 400) {
+                        alert("not complete information")
+                    } else if (response.status_code === 200) {
+                        location.reload();
+                    } else {
+                        alert("10006016")
+                    }
+
                 });
         });
     });

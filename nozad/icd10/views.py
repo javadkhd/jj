@@ -84,7 +84,6 @@ def col_11(request):
         # print(type(reg2))
         # print(type(reg2[0]))
 
-
         if reg1:
             for i in reg1:
                 akbar.add(i)
@@ -148,7 +147,6 @@ def col_13(request):
     my_dict = dict()
 
     for elem in data:
-
         my_dict[elem] = dict()
 
         query_text = f'SELECT توضیحات FROM Sheet۱ WHERE "کدملی(Code)" LIKE "%{elem}%"'
@@ -170,7 +168,7 @@ def col_13(request):
         expl = v['expl']
         des = v['des']
 
-        if des==None:
+        if des == None:
             des = ""
 
         if ("(عمل مستقل)" in expl) or ("کد ديگري" in des):
@@ -185,11 +183,6 @@ def col_13(request):
             if num not in my_dict.keys():
                 report = f"کد {k} همراه با کد انتخابی قابل قبول نیست."
                 my_list.append(report)
-
-
-
-
-
 
         if des:
 
@@ -226,14 +219,50 @@ def col_13(request):
     del my_dict
 
     if not my_list:
-        my_list.append("asghar")
+        my_list.append("200")
 
     return JsonResponse(
         {
-            'arr': my_list,
+            'status_code': my_list,
         }
     )
 
+
+from .models import Icd10
+
+
+def col_14(request):
+    first_name = request.GET.get('first_name', None)
+    # print(type(first_name))
+    last_name = request.GET.get('last_name', None)
+    # print(last_name)
+    doctor_name = request.GET.get('doctor_name', None)
+    # print(doctor_name)
+    national_code = request.GET.get('national_code', None)
+    # print(national_code)
+    codes = request.GET.get('codes', None)
+    print(codes)
+    print(type(codes))
+
+    if not all([first_name, last_name, doctor_name, national_code, codes]):
+        return JsonResponse(
+            {
+                'status_code': 400,
+            }
+        )
+    asghar = Icd10.objects.create()
+    asghar.first_name = first_name
+    asghar.last_name = last_name
+    asghar.doctorname = doctor_name
+    asghar.nationalcode = national_code
+    asghar.codes = codes
+    asghar.save()
+
+    return JsonResponse(
+        {
+            'status_code': 200,
+        }
+    )
 
 
 def nozad(request):
