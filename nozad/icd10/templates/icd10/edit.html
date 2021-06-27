@@ -1,0 +1,72 @@
+{% extends 'icd10/base.html' %}
+{% load static %}
+
+{% block page_header_title %}
+    jj_home
+{% endblock %}
+
+
+{% block body_content %}
+
+    <div class="body">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div role="main" class="main jj-background col-lg-12 col-md-3">
+        <div class="container jj-default">
+
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        <label class="font-weight-bold text-dark text-2">کدملی</label>
+                        <input id="national_code" type="text" value="" class="form-control">
+                    </div>
+                    <div class="form-group col-lg-1">
+                        <label class="font-weight-bold text-dark text-2">جستجو</label>
+                        <input id="search" type="submit" value="جستجو"
+                               class="btn  btn-light text-2 text-uppercase float-right mb-2"
+                               data-loading-text="در حال بارگذاری ...">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block page_scripts %}
+    <script>
+    $(document).ready(function () {
+
+        // code to read selected table row cell data (values).
+        $("#search").on('click', function () {
+            // get the current row
+            var national_code = $("#national_code").val()
+            $.ajax({
+                url: '/icd10/col15/',
+                data: {
+                    national_code: national_code,
+                },
+                method: 'get',
+
+            })
+            {#.done(function (response) {#}
+            {#    if (response.status_code === 400) {#}
+            {#        alert("not complete information")#}
+            {#    } else if (response.status_code === 200) {#}
+            {#        alert('yes')#}
+            {#    }#}
+            {##}
+            {# });#}
+        });
+    });
+</script>
+{% endblock %}

@@ -279,3 +279,15 @@ def nozad(request):
         },
         template_name='icd10/index.html'
     )
+
+
+
+def edit(request):
+
+    return render(
+        request=request,
+        context={
+
+        },
+        template_name='icd10/edit.html'
+    )
